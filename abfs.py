@@ -10,24 +10,31 @@ from C_to_orb import create_orb_files
 
 # generate .abfs in "./"
 def generate_abfs(info_element, abf_dir, abacus_abf, abf, orb):
+    # python conserves change of list
+    # use *_in to change values in function internal.
+    abf_in = copy.deepcopy(abf)
+    orb_in = copy.deepcopy(orb)
+
     pwd = os.getcwd()
     element = list(info_element.keys())
     fix = []
-    for i in range(len(orb)):
+    for i in range(len(orb_in)):
         fix.append(0)
 
-    x = IO.read_orb(info_element, fix, mod = orb, file = './ORBITAL_RESULTS.txt')
+    x = IO.read_orb(info_element, fix, mod = orb_in, file = './ORBITAL_RESULTS.txt')
     os.chdir(abf_dir)
-    for i in abf:
+
+    for i in abf_in:
         if i:
-            orb.append(i)
-    IO.write_orb(x, info_element, fix = abf, mod = orb, file = './ORBITAL_RESULTS.txt')
+            orb_in.append(i)
+
+    IO.write_orb(x, info_element, fix = abf_in, mod = orb_in, file = './ORBITAL_RESULTS.txt')
     # !!!!!!!!!!!!!!!!!!!!!!!!!
     # copy python dict variables 
     # shoubld be careful
     info_element_abf = copy.deepcopy(info_element)
-    info_element_abf[element[0]]['Nu'] = orb
-    info_element_abf[element[0]]['Nl'] = len(orb)
+    info_element_abf[element[0]]['Nu'] = orb_in
+    info_element_abf[element[0]]['Nl'] = len(orb_in)
     
     create_orb_files(info_element_abf)
     orb_str = get_info.get_orb_str(info_element_abf[element[0]]['Nu'])
