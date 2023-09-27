@@ -84,14 +84,6 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
 if __name__=="__main__":
     global flag
     
-    flag = 0
-    slurm_id = os.environ["SLURM_JOB_ID"]
-    new_dir = "opt_"+slurm_id
-    os.system("mkdir "+new_dir)
-    iter_name = "./iter."+slurm_id+".out"
-    
-    info_element = get_info.get_info_element()
-    element = list(info_element.keys())
     ############################################
     # change varibles here
     fix = [1, 1, 0]
@@ -103,11 +95,22 @@ if __name__=="__main__":
     #dif_sum = sum((x - y) for x, y in zip(mod, fix))
     #fre_disp = info_element[element[0]]['Ne'] * dif_sum
     fre_disp = 10
+    work_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/work"
     abacus = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=42 /home/ghj/abacus/230820/abacus-develop/build/abacus"
     abacus_abf = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=42 /home/ghj/abacus/abacus_abfs/abacus-develop/build/abacus"
     librpa = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=42 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
     abf_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"
     ############################################
+    
+    os.chdir("./"+work_dir)
+    flag = 0
+    slurm_id = os.environ["SLURM_JOB_ID"]
+    new_dir = "opt_"+slurm_id
+    os.system("mkdir "+new_dir)
+    iter_name = "./iter."+slurm_id+".out"
+    
+    info_element = get_info.get_info_element()
+    element = list(info_element.keys())
     
     #IO.write_info_element(info_element, filesource = './C_to_orb.py')
     
