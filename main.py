@@ -41,6 +41,7 @@ cp ../STRU ./{0}
     IO.write_orb(x0, info_element, fix, mod, file = './ORBITAL_RESULTS.txt')
     #generate .orb file-------------------------------
     create_orb_files(info_element)
+    
     abfs.generate_abfs(info_element, abf_dir, abacus_abf, abf, mod)
 
     # run abacus and librpa
@@ -74,7 +75,7 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     
     if flag % fre_disp == 0:
         # all units of energy printed are eV
-        write_iter(iter_name, flag, convg, cRPA, E_pbe, E_tot, obj_change)
+        IO.write_iter(iter_name, flag, convg, cRPA, E_pbe, E_tot, obj_change)
     
     flag += 1
 
@@ -102,7 +103,7 @@ if __name__=="__main__":
     abf_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"
     ############################################
     
-    os.chdir("./"+work_dir)
+    os.chdir(work_dir)
     flag = 0
     slurm_id = os.environ["SLURM_JOB_ID"]
     new_dir = "opt_"+slurm_id

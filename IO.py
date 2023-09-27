@@ -111,7 +111,7 @@ def write_iter(file, flag, convg, crpa, e_pbe, e_tot, change):
     e_pbe  *= Ha2eV
     e_tot  *= Ha2eV
     change *= Ha2eV
-    line = "{:<6s} {:<10s} {:<15s} {:<15s} {:<15s} {:<15s}".format(flag, convg, crpa, e_pbe, e_tot, change)
+    line = "{:<6s} {:<10s} {:<15.8f} {:<15.8f} {:<15.8f} {:<15.8f}".format(str(flag), convg, crpa, e_pbe, e_tot, change)
     print(line, file=file)
 
     file.close()

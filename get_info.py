@@ -110,9 +110,9 @@ def get_atomic_number(element):
 def convergence_test(filesource):
     a=checklog(filesource, wordcheck='!! CONVERGENCE HAS NOT BEEN ACHIEVED !!')
     if a=={}:
-        return "Yeah!"
+        return "Y"
     else:
-        return "No!"
+        return "N"
     
 # get DFT etot (Ha)
 def get_etot(filesource='./single_Ne.out'):
