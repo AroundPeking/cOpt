@@ -1,0 +1,23 @@
+#This is the atom file containing all the information
+#about the lattice structure.
+
+ATOMIC_SPECIES
+Ne 20.1797 Ne_ONCV_PBE-1.0.upf 	#Element, Mass, Pseudopotential
+
+NUMERICAL_ORBITAL
+Ne_gga_6au_100Ry_3s3p2d.orb
+
+LATTICE_CONSTANT
+1.889726164  		#Lattice constant
+
+LATTICE_VECTORS		
+20.00  0      0       	#Lattice vector 1
+0      20.00  0         #Lattice vector 2
+0      0      20.00 	#Lattice vector 3
+
+ATOMIC_POSITIONS
+Direct	 		#Cartesian(Unit is LATTICE_CONSTANT)
+Ne 			#Name of element	
+0.0			#Magnetic for this element.
+1			#Number of atoms
+0.00 0.00 0.00 0 0 0	#x,y,z, move_x, move_y, move_z

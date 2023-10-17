@@ -1,0 +1,16 @@
+    # change varibles here
+    fix = [2, 2, 1]
+    mod = [3, 3, 2]
+    # augment abf, e.g. 1f
+    abf = [0, 0, 0, 1] # not used now
+    maxiter = 5000
+    opt_method = "local opt" # local opt / global opt(basinhopping) 
+    method = "Nelder-Mead" # explicit opt method, # 'Nelder-Mead', 'BFGS'
+    #dif_sum = sum((x - y) for x, y in zip(mod, fix))
+    #fre_disp = info_element[element[0]]['Ne'] * dif_sum
+    fre_disp = 10
+    work_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/test"
+    abacus = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/230820/abacus-develop/build/abacus"
+    abacus_abf = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/abacus_abfs/abacus-develop/build/abacus"
+    librpa = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
+    abf_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"

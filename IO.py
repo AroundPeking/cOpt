@@ -19,6 +19,46 @@ def write_info_element(info_element, filesource='./C_to_orb.py'):
     with open(filesource,'w+') as f:
         f.writelines(script)
         
+# read `opt.json`
+def read_json(filename):
+    values = {}
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+    
+    for line in lines:
+        # remove commentary
+        line = re.sub(r'#.*', '', line)
+        line = line.strip()
+        if not line:
+            continue
+        # first "="
+        match = re.match(r'([^=]+)=\s*(.*)', line)
+        if match:
+            key = match.group(1).strip()
+            value = match.group(2).strip()
+            values[key] = value
+    
+    return values
+    ############################################
+    # change varibles here
+    #fix = [0, 0, 0]
+    #mod = [2, 2, 1]
+    ## augment abf, e.g. 1f
+    #abf = [0, 0, 0, 1]
+    #maxiter = 5000
+    #opt_method = "local opt" # local opt / global opt(basinhopping) 
+    #method = "BFGS" # explicit opt method, # 'Nelder-Mead'
+    ##dif_sum = sum((x - y) for x, y in zip(mod, fix))
+    ##fre_disp = info_element[element[0]]['Ne'] * dif_sum
+    #fre_disp = 10
+    #work_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/nn_work"
+    #abacus = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/230820/abacus-develop/build/abacus"
+    #abacus_abf = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/abacus_abfs/abacus-develop/build/abacus"
+    #librpa = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
+    #abf_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"
+    ############################################
+    
+        
 # TZDP: fix DZP, modify the extra part (3th s 3th p 2th d)
 # receive fixing part and modifying part, read ORBITAL_RESULTS.txt
 # return x0

@@ -56,8 +56,11 @@ def get_info_element():
     elif l_max == 'f':
         Nl=4
         Nu=[int(N_orb[0]), int(N_orb[2]), int(N_orb[4]), int(N_orb[6])]
+    elif l_max == 'g':
+        Nl=5
+        Nu=[int(N_orb[0]), int(N_orb[2]), int(N_orb[4]), int(N_orb[6]), int(N_orb[8])]
     else:
-        raise ValueError("l_max is not one of spdf")
+        raise ValueError("l_max is not one of spdfg")
         
     with open('./ORBITAL_RESULTS.txt','r+') as f:
             flist=f.readlines()

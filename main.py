@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ##
-from scipy.optimize import minimize
 import numpy as np
 import os
 import subprocess
@@ -42,7 +41,7 @@ cp ../STRU ./{0}
     #generate .orb file-------------------------------
     create_orb_files(info_element)
     
-    abfs.generate_abfs(info_element, abf_dir, abacus_abf, abf, mod)
+    #abfs.generate_abfs(info_element, abf_dir, abacus_abf, abf, mod)
 
     # run abacus and librpa
     orb_str = get_info.get_orb_str(info_element[element[0]]['Nu'])
@@ -79,28 +78,34 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     
     flag += 1
 
-    return float(obj)
+    return obj*27.2113863
 
 
 if __name__=="__main__":
     global flag
     
+    input_info = IO.read_json('opt.json')
+    for key, value in input_info.items():
+        print(f"{key}: {value}")
+        exec(f"{key} = {value}") 
+    
     ############################################
     # change varibles here
-    fix = [1, 1, 0]
-    mod = [2, 2, 1]
-    # augment abf, e.g. 1f
-    abf = [0, 0, 0, 1]
-    maxiter = 5000
-    
-    #dif_sum = sum((x - y) for x, y in zip(mod, fix))
-    #fre_disp = info_element[element[0]]['Ne'] * dif_sum
-    fre_disp = 10
-    work_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/work"
-    abacus = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=42 /home/ghj/abacus/230820/abacus-develop/build/abacus"
-    abacus_abf = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=42 /home/ghj/abacus/abacus_abfs/abacus-develop/build/abacus"
-    librpa = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=42 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
-    abf_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"
+    #fix = [0, 0, 0]
+    #mod = [2, 2, 1]
+    ## augment abf, e.g. 1f
+    #abf = [0, 0, 0, 1]
+    #maxiter = 5000
+    #opt_method = "local opt" # local opt / global opt(basinhopping) 
+    #method = "BFGS" # explicit opt method, # 'Nelder-Mead'
+    ##dif_sum = sum((x - y) for x, y in zip(mod, fix))
+    ##fre_disp = info_element[element[0]]['Ne'] * dif_sum
+    #fre_disp = 10
+    #work_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/nn_work"
+    #abacus = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/230820/abacus-develop/build/abacus"
+    #abacus_abf = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/abacus_abfs/abacus-develop/build/abacus"
+    #librpa = "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
+    #abf_dir = "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"
     ############################################
     
     os.chdir(work_dir)
@@ -118,9 +123,49 @@ if __name__=="__main__":
     x0 = IO.read_orb(info_element, fix, mod, file = './ORBITAL_RESULTS.txt')
     IO.write_iter_header(iter_name)
     
-    res = minimize(obj, x0, method='BFGS', args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name), options={'maxiter': maxiter, 'gtol': 1e-6})
-    print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
-    print("number of iteration for local minization: %d (nit)" %res.nit)
-    print('number of total iteration:%d'%flag)
-    print(res.message)
+    # scipy
+    if opt_method == "local opt":
+        from scipy.optimize import minimize
+        # 'Nelder-Mead'
+        res = minimize(obj, x0, method=method, tol=1e-7, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name), options={'maxiter': maxiter})
+        print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
+        print("number of iteration for local minization: %d (nit)" %res.nit)
+        print('number of total iteration:%d'%flag)
+        print(res.message)
+        
+    # basinhopping
+    elif opt_method == "global opt":
+        from scipy.optimize import basinhopping
+        minimizer_kwargs={"method": "Nelder-Mead", "tol":1e-7, "args":(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name)}
+        res = basinhopping(obj, x0, niter=maxiter, T=1.0, minimizer_kwargs=minimizer_kwargs)
+        print("Glocal minimum: x = %s , f(x) = %s" % (res.x, res.fun))
+        print("number of iteration for local minization: %d (nit)" %res.nit)
+        print('number of total iteration:%d'%flag)
+        print(res.message)
+
+    # torch_optimizer
+    elif opt_method == "nn opt":
+        import torch
+        from torch_optimizer import SWATS
+        from torch.autograd import Variable
+        
+        xnn = Variable(torch.Tensor(x0), requires_grad=True)
+        optimizer = SWATS([xnn], lr = 0.1, eps = 1e-20) 
+
+        lr_decay = 1.0 # useless
+        for i in range(maxiter):
+            optimizer.zero_grad()  
+            loss = obj(xnn.detach().numpy(), info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name)  
+            loss.backward()  
+            optimizer.step()  # update x
+        
+            for param_group in optimizer.param_groups:
+                param_group['lr'] *= lr_decay
+        
+        print("Final result:")
+        print(f"x = {x.data}")
+        print(f"Minimum value of objective function: {obj(x)}")
+        
+    else:
+        raise ValueError("Please check opt_method")
     
