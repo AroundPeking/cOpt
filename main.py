@@ -125,13 +125,20 @@ if __name__=="__main__":
     
     # scipy
     if opt_method == "local opt":
-        from scipy.optimize import minimize
+            if method == "fmin":
+                from scipy.optimize import fmin
+                res = fmin(obj, x0, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name))
+                print("Local minimum: x = %s , f(x) = %s" % (res.xopt, res.fopt))
+                print('number of total iteration:%d'%flag)
+                print(res)
+            else:
+                from scipy.optimize import minimize
         # 'Nelder-Mead'
-        res = minimize(obj, x0, method=method, tol=1e-7, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name), options={'maxiter': maxiter})
-        print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
-        print("number of iteration for local minization: %d (nit)" %res.nit)
-        print('number of total iteration:%d'%flag)
-        print(res.message)
+                res = minimize(obj, x0, method=method, tol=1e-7, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name), options={'maxiter': maxiter})
+                print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
+                print("number of iteration for local minization: %d (nit)" %res.nit)
+                print('number of total iteration:%d'%flag)
+                print(res.message)
         
     # basinhopping
     elif opt_method == "global opt":
