@@ -86,7 +86,7 @@ if __name__=="__main__":
     
     input_info = IO.read_json('opt.json')
     for key, value in input_info.items():
-        print(f"{key}: {value}")
+        print(f"{key}: {value}", flush=True)
         exec(f"{key} = {value}") 
     
     ############################################
@@ -143,7 +143,7 @@ if __name__=="__main__":
     # basinhopping
     elif opt_method == "global opt":
         from scipy.optimize import basinhopping
-        minimizer_kwargs={"method": "Nelder-Mead", "tol":1e-7, "args":(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name)}
+        minimizer_kwargs={"method": method, "tol":1e-7, "args":(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name)}
         res = basinhopping(obj, x0, niter=maxiter, T=1.0, minimizer_kwargs=minimizer_kwargs)
         print("Glocal minimum: x = %s , f(x) = %s" % (res.x, res.fun))
         print("number of iteration for local minization: %d (nit)" %res.nit)

@@ -68,7 +68,7 @@ def get_info_element():
     second_index=flist.index('\tType\tL\tZeta-Orbital\n',first_index+1)
     Ne=second_index-first_index-2
     info_element={element: {'index': 0, 'Nu': Nu, 'Nl': Nl, 'Rcut': Rcut, 'dr': 0.01, 'Ecut': Ecut, 'Ne': Ne}}
-    print(f"info_element: {info_element}, reading from STRU and ORBITAL_RESULTS.txt.")
+    print(f"info_element: {info_element}, reading from STRU and ORBITAL_RESULTS.txt.", flush = True)
     
     return info_element
           

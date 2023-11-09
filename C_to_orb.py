@@ -3,7 +3,7 @@
 #
 
 import sys
-sys.path.append('../../../opt_orb_pytorch_dpsi/')
+sys.path.append('./opt_orb_pytorch_dpsi/')
 import orbital
 import torch
 import numpy as np
