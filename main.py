@@ -60,10 +60,12 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     if(flag==0):
         obj_ini=obj
     obj_change=obj-obj_ini
-        
-    if flag % fre_disp == 0:
+    
+    convg=get_info.convergence_test("single_"+element[0]+".out")
+    
+    if (flag % fre_disp == 0) or (convg == "N"):
         # all units of energy here are Hartree
-        convg=get_info.convergence_test("single_"+element[0]+".out")
+        # convg=get_info.convergence_test("single_"+element[0]+".out")
         E_withoutRPA=get_info.get_Etot_without_rpa("single_"+element[0]+".out")
         E_pbe=get_info.get_etot("single_"+element[0]+".out")
         E_tot=E_withoutRPA+cRPA
@@ -72,7 +74,7 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     #-------------print info to iter.out---------------
     os.chdir("../..")
     
-    if flag % fre_disp == 0:
+    if (flag % fre_disp == 0) or (convg == "N"):
         # all units of energy printed are eV
         IO.write_iter(iter_name, flag, convg, cRPA, E_pbe, E_tot, obj_change)
     

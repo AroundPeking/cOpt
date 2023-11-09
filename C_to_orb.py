@@ -3,7 +3,9 @@
 #
 
 import sys
-sys.path.append('./opt_orb_pytorch_dpsi/')
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'opt_orb_pytorch_dpsi'))
+
 import orbital
 import torch
 import numpy as np
