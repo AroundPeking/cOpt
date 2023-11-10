@@ -11,7 +11,7 @@ import abfs
 from C_to_orb import create_orb_files
 
 
-def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name):
+def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg):
     global obj_ini
     global flag
     
@@ -29,6 +29,11 @@ cp ../INPUT ./{0}
 cp ../KPT ./{0}
 cp ../STRU ./{0}
 '''.format(str(flag), element[0])
+    if(init_chg):
+	    add_chg = '''
+	    cp ../SPIN*_CHG.cube ./{0}
+	    '''.format(str(flag))
+	    sys_run_str += add_chg
     #sys.stdout.flush() 
     subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
     #sys.stdout.flush() 
@@ -129,14 +134,14 @@ if __name__=="__main__":
     if opt_method == "local opt":
             if method == "fmin":
                 from scipy.optimize import fmin
-                res = fmin(obj, x0, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name))
+                res = fmin(obj, x0, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg))
                 print("Local minimum: x = %s , f(x) = %s" % (res.xopt, res.fopt))
                 print('number of total iteration:%d'%flag)
                 print(res)
             else:
                 from scipy.optimize import minimize
         # 'Nelder-Mead'
-                res = minimize(obj, x0, method=method, tol=1e-7, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name), options={'maxiter': maxiter})
+                res = minimize(obj, x0, method=method, tol=1e-7, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg), options={'maxiter': maxiter})
                 print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
                 print("number of iteration for local minization: %d (nit)" %res.nit)
                 print('number of total iteration:%d'%flag)
@@ -145,7 +150,7 @@ if __name__=="__main__":
     # basinhopping
     elif opt_method == "global opt":
         from scipy.optimize import basinhopping
-        minimizer_kwargs={"method": method, "tol":1e-7, "args":(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name)}
+        minimizer_kwargs={"method": method, "tol":1e-7, "args":(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg)}
         res = basinhopping(obj, x0, niter=maxiter, T=1.0, minimizer_kwargs=minimizer_kwargs)
         print("Glocal minimum: x = %s , f(x) = %s" % (res.x, res.fun))
         print("number of iteration for local minization: %d (nit)" %res.nit)
