@@ -9,6 +9,7 @@ import get_info
 import IO
 import abfs
 from C_to_orb import create_orb_files
+import time
 
 
 def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg):
@@ -32,8 +33,8 @@ cp ../STRU ./{0}
     if(init_chg):
 	    add_chg = '''
 	    cp ../SPIN*_CHG.cube ./{0}
-	    '''.format(str(flag))
-	    sys_run_str += add_chg
+        '''.format(str(flag))
+        sys_run_str += add_chg
     #sys.stdout.flush() 
     subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
     #sys.stdout.flush() 
@@ -57,9 +58,31 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
 {6} > LibRPA_single_{0}.out
 '''.format(element[0], atom_num, info_element[element[0]]['Rcut'], info_element[element[0]]['Ecut'], orb_str, abacus, librpa)
     #sys.stdout.flush() 
-    subprocess.run( [run_abacus, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
+    #subprocess.run( [run_abacus, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
     #sys.stdout.flush() 
-    
+
+    # Number of attempts allowed
+    max_attempts = 5
+
+    # Retry loop
+    for attempt in range(1, max_attempts + 1):
+        try:
+            # Run the command
+            subprocess.run([run_abacus, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL, check=True)
+
+            # If the command succeeds, break out of the loop
+            break
+        except subprocess.CalledProcessError as e:
+            # If the command fails, print an error message
+            print(f"Iter{flag}: Attempt {attempt} failed with exit code {e.returncode}. Retrying...", flush=True)
+
+            # Add a delay before retrying (optional)
+            time.sleep(1)
+    else:
+        # If all attempts fail, print an error message and handle accordingly
+        print(f"All {max_attempts} attempts failed. Exiting.")
+        # You can raise an exception, log the failure, or take other appropriate actions here.
+
     cRPA=get_info.get_cRPA("LibRPA_single_"+element[0]+".out")
     obj=cRPA
     if(flag==0):
