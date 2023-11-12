@@ -31,8 +31,8 @@ cp ../KPT ./{0}
 cp ../STRU ./{0}
 '''.format(str(flag), element[0])
     if(init_chg):
-	    add_chg = '''
-	    cp ../SPIN*_CHG.cube ./{0}
+        add_chg = '''
+        cp ../SPIN*_CHG.cube ./{0}
         '''.format(str(flag))
         sys_run_str += add_chg
     #sys.stdout.flush() 
