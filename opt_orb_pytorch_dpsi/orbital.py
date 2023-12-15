@@ -55,8 +55,9 @@ def orth(orb,dr):
 	""" orb[it][il][iu,r] """
 	for it,orb_t in orb.items():
 		for il,orb_tl in enumerate(orb_t):	
-			for iu1,orb_tlu1 in enumerate(orb_tl):
+			for iu1,orb_tlu1 in enumerate(orb_tl):#(orb_tl[:][:2]):
 				for iu2 in range(iu1):
+					#if(il<=1):
 					orb_tlu1[:] -= orb_tl[iu2] * inner_product(orb_tlu1,orb_tl[iu2],dr[it])
 				orb_tlu1[:] = orb_tlu1 / np.sqrt(inner_product(orb_tlu1,orb_tlu1,dr[it]))
 				

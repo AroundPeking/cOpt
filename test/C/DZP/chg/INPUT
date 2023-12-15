@@ -1,0 +1,26 @@
+INPUT_PARAMETERS
+#Parameters	(General)
+pseudo_dir		./
+
+calculation	scf
+ntype			1	
+nbands			13
+nspin			2
+out_chg		1
+#Parameters (Accuracy)
+ecutwfc			100
+
+smearing_method 	gaussian
+smearing_sigma		1e-6
+basis_type		lcao
+ks_solver  genelpa
+dft_functional			pbe
+rpa				1
+symmetry			-1
+exx_separate_loop		1
+exx_pca_threshold		-1
+exx_ccp_rmesh_times		5
+exx_c_threshold			0	
+exx_dm_threshold		0	
+exx_schwarz_threshold	0	
+exx_cauchy_threshold	1E-7

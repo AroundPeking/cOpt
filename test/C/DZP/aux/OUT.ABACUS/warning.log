@@ -1,0 +1,30 @@
+ In SCAN_BEGIN, can't find: ABFS_ORBITAL block.
+ In SCAN_BEGIN, can't find: LATTICE_PARAMETERS block.
+ In SCAN_BEGIN, can't find: <PP_MESH block.
+ AUTO_SET NBANDS to 26
+      Processor           Atom
+              1             67
+                            startmag_type = 2
+                       charge from rho_at = 3.99303
+                         charge should be = 4
+
+ SETUP ATOMIC RHO FOR SPIN 1
+                 Electron number from rho = 8
+           total electron number from rho = 8
+                                should be = 8
+                 charge before normalized = 8
+                  charge after normalized = 8
+                 charge before normalized = 8.00000329737002
+                  charge after normalized = 8.00000000000002
+                 charge before normalized = 8.00000328803522
+                  charge after normalized = 8
+                 charge before normalized = 8.00000328070692
+                  charge after normalized = 7.99999999999996
+                 charge before normalized = 8.00000327905048
+                  charge after normalized = 7.99999999999998
+                 charge before normalized = 8.00000327900354
+                  charge after normalized = 7.99999999999994
+                 charge before normalized = 8.00000327900526
+                  charge after normalized = 8.00000000000001
+                 charge before normalized = 8.00000327900469
+                  charge after normalized = 8.00000000000001

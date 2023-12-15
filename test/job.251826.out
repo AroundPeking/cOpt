@@ -1,9 +1,0 @@
-Working directory is /home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/test
-This job has allocated 48 cpu cores.
-Begin Time: 2023年 10月 17日 星期二 19:39:36 CST
-whoami：无法找到用户ID 为1019 的用户名
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-srun: got SIGCONT
-slurmstepd: error: *** JOB 251826 ON cpu04 CANCELLED AT 2023-10-17T19:40:21 ***
-srun: forcing job termination
-slurmstepd: error: *** STEP 251826.0 ON cpu04 CANCELLED AT 2023-10-17T19:40:21 ***

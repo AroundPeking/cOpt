@@ -1,0 +1,1433 @@
+Working directory is /home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/C
+This job has allocated 48 cpu cores.
+Begin Time: 2023年 11月 29日 星期三 11:28:26 CST
+fix: [1, 1, 0]
+mod: [2, 2, 1]
+abf: [0, 0, 0, 1]
+init_chg: "true"
+maxiter: 10000
+opt_method: "local opt"
+method: "Powell"
+fre_disp: 20
+work_dir: "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/C"
+abacus: "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/230820/abacus-develop/build/abacus"
+abacus_abf: "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/abacus_abfs/abacus-develop/build/abacus"
+librpa: "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
+abf_dir: "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/DZP_SZ1f/gen_abf"
+info_element: {'C': {'index': 0, 'Nu': [2, 2, 1], 'Nl': 3, 'Rcut': 8, 'dr': 0.01, 'Ecut': 100, 'Ne': 25}}, reading from STRU and ORBITAL_RESULTS.txt.
+[cpu07:228044:0:228052]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x263bb30 ep=0x266c3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 228052) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6464: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:232650:0:232658]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2a75b30 ep=0x2aa6510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 232658) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6478: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:235639:0:235647]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2b7ab30 ep=0x2bab490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 235647) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6487: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:241871:0:241879]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3c1cc50 ep=0x3c4d490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 241879) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6506: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:244875:0:244883]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3210c50 ep=0x3241510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 244883) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6515: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:246566:0:246574]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x20e8c50 ep=0x2119490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 246574) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6520: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:248582:0:248590]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3624b30 ep=0x3655490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 248590) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6526: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:250923:0:250931]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3f3bc50 ep=0x3f6c490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 250931) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6533: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:253266:0:253274]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x20bcc50 ep=0x20ed510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 253274) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6540: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:273120:0:273128]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x35aec50 ep=0x35df490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 273128) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6601: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:289076:0:289084]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x21fdb30 ep=0x222e490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 289084) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6650: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:303724:0:303732]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2501b30 ep=0x25323d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 303732) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6695: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:306079:0:306087]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3d66c50 ep=0x3d97490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 306087) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6702: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:313280:0:313288]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x26cdb30 ep=0x26fe3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 313288) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6724: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:361631:0:361639]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x398bbc0 ep=0x39bc4f0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 361639) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6873: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:372088:0:372096]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3eeac50 ep=0x3f1b510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 372096) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6905: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:377671:0:377679]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x20d6b30 ep=0x2107490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 377679) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6922: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:383574:0:383582]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x26c0c50 ep=0x26f1610 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 383582) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6940: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:384947:0:384955]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x292db30 ep=0x295e490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 384955) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6944: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:388911:0:388919]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x336bce0 ep=0x339c510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 388919) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter6956: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:404861:0:404869]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2a40b30 ep=0x2a71490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 404869) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7005: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:414338:0:414346]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x242cc50 ep=0x245d490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 414346) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7034: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:416676:0:416684]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x27ecc50 ep=0x281d5f0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 416684) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7041: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:417074:0:417082]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3180b30 ep=0x31b13d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 417082) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7042: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:419737:0:419745]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2becb30 ep=0x2c1d3b0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 419745) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7050: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:427927:0:427935]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3498c50 ep=0x34c9490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 427935) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7075: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:433186:0:433194]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x231fb30 ep=0x23503b0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 433194) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7091: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:445890:0:445898]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3a85c50 ep=0x3ab6510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 445898) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7130: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:446617:0:446625]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x38acc50 ep=0x38dd490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 446625) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7132: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:453490:0:453498]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3d24b30 ep=0x3d555f0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 453498) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7153: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:454536:0:454544]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2fa3bc0 ep=0x2fd4510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 454544) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7156: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:458186:0:458194]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2b00c50 ep=0x2b31490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 458194) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7167: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:1756 :0:1764]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2332c50 ep=0x2363490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:   1764) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7173: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:4111 :0:4119]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x285db30 ep=0x288e6d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:   4119) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7180: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:4856 :0:4864]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x20e3b30 ep=0x21143d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:   4864) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7182: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:10476:0:10484]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2961c50 ep=0x29923d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  10484) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7199: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:20042:0:20050]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3be3b30 ep=0x3c143b0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  20050) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7228: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:20440:0:20448]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2dc9c50 ep=0x2dfa490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  20448) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7229: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:21487:0:21495]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x30bec50 ep=0x30ef510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  21495) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7232: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:23510:0:23518]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x248cb30 ep=0x24bd490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  23518) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7238: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:32021:0:32029]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2fbec50 ep=0x2fef5f0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  32029) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7264: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:32743:0:32751]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3574aa0 ep=0x35a5350 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  32751) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7266: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:33463:0:33471]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x339fb30 ep=0x33d03d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  33471) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7268: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:39043:0:39051]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2429d70 ep=0x245a610 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  39051) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7285: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:42032:0:42040]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2312b30 ep=0x2343490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  42040) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7294: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:47941:0:47949]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x378bb30 ep=0x37bc3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  47949) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7312: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:50930:0:50938]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x37c7b30 ep=0x37f83d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  50938) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7321: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:51651:0:51659]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x25adc50 ep=0x25de750 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  51659) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7323: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:56255:0:56263]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2394c50 ep=0x23c5510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  56263) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7337: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:58922:0:58930]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x20aab30 ep=0x20db3b0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  58930) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7345: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:59642:0:59650]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2a0db30 ep=0x2a3e3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  59650) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7347: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:62658:0:62666]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3fcab30 ep=0x3ffb3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  62666) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7356: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:63386:0:63394]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3a90aa0 ep=0x3ac1350 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  63394) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7358: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:71557:0:71565]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2754aa0 ep=0x2785350 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  71565) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7383: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:72601:0:72609]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2066c50 ep=0x2097510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  72609) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7386: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:75593:0:75601]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2ff9b30 ep=0x302a3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  75601) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7395: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:77284:0:77292]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x381ec50 ep=0x384f510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  77292) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7400: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:77683:0:77691]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2f8fc50 ep=0x2fc0510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  77691) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7401: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:79374:0:79382]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2fcec50 ep=0x2fff510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  79382) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7406: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:82691:0:82699]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x39e2c50 ep=0x3a13610 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  82699) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7416: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:86646:0:86654]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x27f3c50 ep=0x2824490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  86654) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7428: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:90930:0:90938]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2759b30 ep=0x278a5f0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  90938) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7441: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:91330:0:91338]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2189b30 ep=0x21ba490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  91338) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7442: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:92714:0:92722]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x24d6b30 ep=0x2507510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  92722) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7446: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:97003:0:97011]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2320b30 ep=0x23513d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  97011) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7459: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:98694:0:98702]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2eb6b30 ep=0x2ee7490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  98702) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7464: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:99092:0:99100]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2ee4c50 ep=0x2f153d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  99100) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7465: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:99814:0:99822]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2628c50 ep=0x2659510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid:  99822) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7467: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:105397:0:105405]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x4010b30 ep=0x40413d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 105405) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7484: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:106440:0:106448]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2acac50 ep=0x2afb510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 106448) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7487: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:106839:0:106847]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3dccb30 ep=0x3dfd3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 106847) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7488: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:112095:0:112103]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2eedb30 ep=0x2f1e490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 112103) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7504: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:113140:0:113148]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x38ebb30 ep=0x391c510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 113148) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7507: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:116133:0:116141]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2ed7bc0 ep=0x2f08410 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 116141) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7516: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:120416:0:120424]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x38e5c50 ep=0x3916510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 120424) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7529: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:123080:0:123088]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x31f7aa0 ep=0x3228430 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 123088) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7537: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:132245:0:132253]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3399c50 ep=0x33ca510 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 132253) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7565: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:133615:0:133623]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3c2ebc0 ep=0x3c5f4f0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 133623) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7569: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:135958:0:135966]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x34fab30 ep=0x352b3d0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 135966) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7576: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:136680:0:136688]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x33abc50 ep=0x33dc610 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 136688) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7578: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:138049:0:138057]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2b35b30 ep=0x2b66490 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 138057) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7582: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:140390:0:140398]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x3423aa0 ep=0x3454350 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 140398) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7589: Attempt 1 failed with exit code 255. Retrying...
+[cpu07:142732:0:142740]       ud_ep.c:547  Assertion `ep->rx.ooo_pkts.head_sn == neth->psn' failed: iface=0x2e80b30 ep=0x2eb13b0 conn_id=0 ep_id=0, dest_ep_id=0 rx_psn=2 neth_psn=1 ep_flags=0x78 ctl_ops=0x0 rx_creq_count=2
+==== backtrace (tid: 142740) ====
+ 0 0x000000000004cb15 ucs_debug_print_backtrace()  ???:0
+ 1 0x00000000000426dd uct_ud_ep_process_rx()  ???:0
+ 2 0x000000000004710d uct_ud_mlx5_ep_t_delete()  ???:0
+ 3 0x000000000003eb1f uct_ud_iface_release_desc()  ???:0
+ 4 0x000000000003faf6 ucs_cpu_get_memcpy_bw()  ???:0
+ 5 0x000000000003fbcb ucs_cpu_get_memcpy_bw()  ???:0
+ 6 0x0000000000040a03 ucs_async_dispatch_handlers()  ???:0
+ 7 0x0000000000040b48 ucs_async_dispatch_timerq()  ???:0
+ 8 0x00000000000432f4 ucs_async_pipe_drain()  ???:0
+ 9 0x0000000000007dd5 start_thread()  pthread_create.c:0
+10 0x00000000000fdead __clone()  ???:0
+=================================
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  encounter zero dimension
+Iter7596: Attempt 1 failed with exit code 255. Retrying...
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 255329.24210 ON cpu07 CANCELLED AT 2023-12-04T13:48:41 ***
+slurmstepd: error: *** JOB 255329 ON cpu07 CANCELLED AT 2023-12-04T13:48:41 ***
+srun: forcing job termination

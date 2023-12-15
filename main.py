@@ -30,7 +30,7 @@ cp ../INPUT ./{0}
 cp ../KPT ./{0}
 cp ../STRU ./{0}
 '''.format(str(flag), element[0])
-    if(init_chg):
+    if(init_chg=="true"):
         add_chg = '''
         cp ../SPIN*_CHG.cube ./{0}
         '''.format(str(flag))

@@ -1,0 +1,44 @@
+                                                                                     
+                              ABACUS v3.3.2
+
+               Atomic-orbital Based Ab-initio Computation at UStc                    
+
+                     Website: http://abacus.ustc.edu.cn/                             
+               Documentation: https://abacus.deepmodeling.com/                       
+                  Repository: https://github.com/abacusmodeling/abacus-develop       
+                              https://github.com/deepmodeling/abacus-develop         
+                      Commit: e39b50e (Fri Aug 18 16:14:25 2023 +0800)
+
+ Mon Dec  4 14:26:12 2023
+ MAKE THE DIR         : OUT.ABACUS/
+ UNIFORM GRID DIM     : 36 * 36 * 36
+ UNIFORM GRID DIM(BIG): 9 * 9 * 9
+ DONE(0.0376987  SEC) : SETUP UNITCELL
+ DONE(0.0422244  SEC) : INIT K-POINTS
+ ---------------------------------------------------------
+ Self-consistent calculations for electrons
+ ---------------------------------------------------------
+ SPIN    KPOINTS         PROCESSORS  NBASE       
+ 1       216             1           40          
+ ---------------------------------------------------------
+ Use Systematically Improvable Atomic bases
+ ---------------------------------------------------------
+ ELEMENT ORBITALS        NBASE       NATOM       XC          
+ C       2s2p1d1f-8au    20          2           
+ ---------------------------------------------------------
+ Initial plane wave basis and FFT box
+ ---------------------------------------------------------
+ -------------------------------------------
+ SELF-CONSISTENT : 
+ -------------------------------------------
+ START CHARGE      : atomic
+ DONE(0.486118   SEC) : INIT SCF
+ ITER   ETOT(eV)       EDIFF(eV)      DRHO       TIME(s)    
+ GE1    -3.084374e+02  0.000000e+00   1.080e-01  2.044e+00  
+ GE2    -3.084692e+02  -3.181596e-02  2.646e-02  1.586e+00  
+ GE3    -3.084695e+02  -2.626626e-04  3.536e-03  1.578e+00  
+ GE4    -3.084695e+02  -4.406522e-06  6.325e-05  1.574e+00  
+ GE5    -3.084695e+02  -6.328928e-09  9.018e-06  1.556e+00  
+ GE6    -3.084695e+02  -3.659122e-10  2.167e-06  1.561e+00  
+ GE7    -3.084695e+02  -8.869867e-11  1.468e-08  1.561e+00  
+/home/ghj/abacus/abacus_abfs/abacus-develop/source/module_ri/Exx_LRI.hpp line 73

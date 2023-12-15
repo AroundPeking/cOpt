@@ -1,0 +1,95 @@
+                                                                                     
+                              ABACUS v3.3.2
+
+               Atomic-orbital Based Ab-initio Computation at UStc                    
+
+                     Website: http://abacus.ustc.edu.cn/                             
+               Documentation: https://abacus.deepmodeling.com/                       
+                  Repository: https://github.com/abacusmodeling/abacus-develop       
+                              https://github.com/deepmodeling/abacus-develop         
+                      Commit: e39b50e (Fri Aug 18 16:14:25 2023 +0800)
+
+ Wed Nov 29 10:42:48 2023
+ MAKE THE DIR         : OUT.ABACUS/
+ UNIFORM GRID DIM     : 125 * 125 * 125
+ UNIFORM GRID DIM(BIG): 25 * 25 * 25
+ DONE(0.2108     SEC) : SETUP UNITCELL
+ DONE(0.211837   SEC) : INIT K-POINTS
+ ---------------------------------------------------------
+ Self-consistent calculations for electrons
+ ---------------------------------------------------------
+ SPIN    KPOINTS         PROCESSORS  NBASE       
+ 2       2               1           13          
+ ---------------------------------------------------------
+ Use Systematically Improvable Atomic bases
+ ---------------------------------------------------------
+ ELEMENT ORBITALS        NBASE       NATOM       XC          
+ C       2s2p1d-8au      13          1           
+ ---------------------------------------------------------
+ Initial plane wave basis and FFT box
+ ---------------------------------------------------------
+ -------------------------------------------
+ SELF-CONSISTENT : 
+ -------------------------------------------
+ START CHARGE      : atomic
+ DONE(1.06455    SEC) : INIT SCF
+ ITER   TMAG      AMAG      ETOT(eV)       EDIFF(eV)      DRHO       TIME(s)    
+ GE1    2.00e+00  2.00e+00  -1.473617e+02  0.000000e+00   4.623e-02  5.575e-01  
+ GE2    2.00e+00  2.00e+00  -1.473681e+02  -6.388633e-03  1.395e-02  5.262e-01  
+ GE3    2.00e+00  2.00e+00  -1.473683e+02  -2.027105e-04  2.948e-03  5.044e-01  
+ GE4    2.00e+00  2.00e+00  -1.473683e+02  -5.319874e-06  3.303e-04  5.094e-01  
+ GE5    2.00e+00  2.00e+00  -1.473683e+02  -7.737830e-08  9.306e-06  5.156e-01  
+ GE6    2.00e+00  2.00e+00  -1.473683e+02  7.772614e-10   4.518e-06  5.135e-01  
+ GE7    2.00e+00  2.00e+00  -1.473683e+02  -9.727126e-10  2.266e-08  5.005e-01  
+rpa_pca_threshold: -1.000e+00
+rpa_ccp_rmesh_times: 5.000e+00
+rpa_lcao_exx(Ha): -1.238652847799614
+etxc(Ha): -1.485888631695086
+etot(Ha): -5.415684188841313
+Etot_without_rpa(Ha): -5.168448404945841
+
+  |CLASS_NAME---------|NAME---------------|TIME(Sec)-----|CALLS----|AVG------|PER%-------
+                       total               19.24168       7         2.75      100.00    %
+   Driver              driver_line         19.22831       1         19.23     99.93     %
+   mymath              heapsort            0.10357        2         0.05      0.54      %
+   NOrbital_Lm         extra_uniform       0.47405        2327      0.00      2.46      %
+   Mathzone_Add1       Cubic_Spline_Interpolation0.13517        2327      0.00      0.70      %
+   ORB_control         set_orb_tables      0.24914        1         0.25      1.29      %
+   ORB_gen_tables      gen_tables          0.24913        1         0.25      1.29      %
+   ORB_table_phi       cal_ST_Phi12_R      7.34223        5108      0.00      38.16     %
+   ORB_gaunt_table     init_Gaunt_CH       0.11733        4         0.03      0.61      %
+   ORB_gaunt_table     init_Gaunt          1.11368        4         0.28      5.79      %
+   ORB_gaunt_table     Get_Gaunt_SH        9.88635        3636325   0.00      51.38     %
+   Ions                opt_ions            18.66804       1         18.67     97.02     %
+   ESolver_KS_LCAO     Run                 18.66801       1         18.67     97.02     %
+   ESolver_KS_LCAO     beforescf           0.49677        1         0.50      2.58      %
+   PW_Basis            recip2real          0.57794        75        0.01      3.00      %
+   Potential           init_pot            0.40175        1         0.40      2.09      %
+   Potential           update_from_charge  2.42348        8         0.30      12.59     %
+   Potential           cal_v_eff           2.40282        8         0.30      12.49     %
+   H_Hartree_pw        v_hartree           0.27230        8         0.03      1.42      %
+   PW_Basis            real2recip          0.69523        108       0.01      3.61      %
+   PotXC               cal_v_eff           2.05030        8         0.26      10.66     %
+   XC_Functional       v_xc                2.00911        8         0.25      10.44     %
+   HSolverLCAO         solve               0.84239        7         0.12      4.38      %
+   HamiltLCAO          updateHk            0.20399        14        0.01      1.06      %
+   OperatorLCAO        init                0.20263        28        0.01      1.05      %
+   Veff                contributeHk        0.20244        14        0.01      1.05      %
+   Gint_interface      cal_gint            0.73273        21        0.03      3.81      %
+   Gint_interface      cal_gint_vlocal     0.18829        14        0.01      0.98      %
+   ElecStateLCAO       psiToRho            0.62274        7         0.09      3.24      %
+   Gint_interface      cal_gint_rho        0.54443        7         0.08      2.83      %
+   Charge              mix_rho             0.13186        6         0.02      0.69      %
+   Charge              Pulay_mixing        0.11107        6         0.02      0.58      %
+   Exx_LRI             init                12.91030       1         12.91     67.10     %
+   Matrix_Orbs21       init                1.93648        2         0.97      10.06     %
+   Matrix_Orbs21       init_radial_table   3.67487        2         1.84      19.10     %
+   LRI_CV              set_orbitals        10.01767       1         10.02     52.06     %
+   Matrix_Orbs11       init                1.40645        1         1.41      7.31      %
+   Matrix_Orbs11       init_radial_table   5.29340        1         5.29      27.51     %
+ ----------------------------------------------------------------------------------------
+
+ START  Time  : Wed Nov 29 10:42:48 2023
+ FINISH Time  : Wed Nov 29 10:43:07 2023
+ TOTAL  Time  : 19
+ SEE INFORMATION IN : OUT.ABACUS/
