@@ -157,3 +157,28 @@ def write_iter(file, flag, convg, crpa, e_pbe, e_tot, change):
     file.close()
     
     
+def write_best_orb(obj, obj_change, orb_dir):
+    file = open(orb_dir+"/best_orb_info.dat", "a")
+    # Hartree to eV
+    Ha2eV = 27.2113863
+    obj  *= Ha2eV
+    obj_change *= Ha2eV
+    line = "{:<6s} {:<15.8f} {:<15.8f}".format(str(flag), obj, obj_change)
+    print(line, file=file)
+
+    file.close()
+    sys_run_str = '''
+cp ./ORBITAL_RESULTS.txt {0}
+cp ./ORBITAL_PLOTU.dat {0}
+cp ./*_gga_*au_*Ry_*.orb {0}
+'''.format(orb_dir)
+
+    #sys.stdout.flush() 
+    subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
+    #sys.stdout.flush() 
+
+def write_best_header(orb_dir):
+    file = open(orb_dir+"/best_orb_info.dat", "a")
+    header = "{:<6s} {:<15s} {:<15s}".format("Iter", "cRPA(eV)", "change(eV, vs iter0)")
+    print(header, file=file)
+    file.close()

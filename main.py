@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ##
+from typing import ByteString
 import numpy as np
 import os
 import subprocess
@@ -12,8 +13,9 @@ from C_to_orb import create_orb_files
 import time
 
 
-def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg):
+def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg, orb_dir):
     global obj_ini
+    global best_obj
     global flag
     
     element = list(info_element.keys())
@@ -87,6 +89,7 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     obj=cRPA
     if(flag==0):
         obj_ini=obj
+        best_obj=obj
     obj_change=obj-obj_ini
     
     convg=get_info.convergence_test("single_"+element[0]+".out")
@@ -98,6 +101,9 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
         E_pbe=get_info.get_etot("single_"+element[0]+".out")
         E_tot=E_withoutRPA+cRPA
         
+    if (obj < best_obj):
+        best_obj = obj
+        IO.write_best_orb(flag, obj, obj_change, orb_dir)
     
     #-------------print info to iter.out---------------
     os.chdir("../..")
@@ -142,7 +148,10 @@ if __name__=="__main__":
     flag = 0
     slurm_id = os.environ["SLURM_JOB_ID"]
     new_dir = "opt_"+slurm_id
-    os.system("mkdir "+new_dir)
+    orb_dir = "best_orb_"+slurm_id
+    os.makedirs(new_dir, exist_ok=False)
+    os.makedirs(orb_dir, exist_ok=False)
+    IO.write_best_header(orb_dir)
     iter_name = "./iter."+slurm_id+".out"
     
     info_element = get_info.get_info_element()
@@ -153,18 +162,19 @@ if __name__=="__main__":
     x0 = IO.read_orb(info_element, fix, mod, file = './ORBITAL_RESULTS.txt')
     IO.write_iter_header(iter_name)
     
+    args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg, orb_dir)
     # scipy
     if opt_method == "local opt":
             if method == "fmin":
                 from scipy.optimize import fmin
-                res = fmin(obj, x0, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg))
+                res = fmin(obj, x0, args=args)
                 print("Local minimum: x = %s , f(x) = %s" % (res.xopt, res.fopt))
                 print('number of total iteration:%d'%flag)
                 print(res)
             else:
                 from scipy.optimize import minimize
-        # 'Nelder-Mead'
-                res = minimize(obj, x0, method=method, tol=1e-7, args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg), options={'maxiter': maxiter})
+        # 'Nelder-Mead' 'Powell'
+                res = minimize(obj, x0, method=method, tol=1e-7, args=args, options={'maxiter': maxiter})
                 print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
                 print("number of iteration for local minization: %d (nit)" %res.nit)
                 print('number of total iteration:%d'%flag)
@@ -173,7 +183,7 @@ if __name__=="__main__":
     # basinhopping
     elif opt_method == "global opt":
         from scipy.optimize import basinhopping
-        minimizer_kwargs={"method": method, "tol":1e-7, "args":(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg)}
+        minimizer_kwargs={"method": method, "tol":1e-7, "args":args}
         res = basinhopping(obj, x0, niter=maxiter, T=1.0, minimizer_kwargs=minimizer_kwargs)
         print("Glocal minimum: x = %s , f(x) = %s" % (res.x, res.fun))
         print("number of iteration for local minization: %d (nit)" %res.nit)
@@ -192,7 +202,7 @@ if __name__=="__main__":
         lr_decay = 1.0 # useless
         for i in range(maxiter):
             optimizer.zero_grad()  
-            loss = obj(xnn.detach().numpy(), info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name)  
+            loss = obj(xnn.detach().numpy(), info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, orb_dir)  
             loss.backward()  
             optimizer.step()  # update x
         
