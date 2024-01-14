@@ -157,7 +157,8 @@ def write_iter(file, flag, convg, crpa, e_pbe, e_tot, change):
     file.close()
     
     
-def write_best_orb(obj, obj_change, orb_dir):
+def write_best_orb(flag, obj, obj_change, orb_dir):
+    import subprocess
     file = open(orb_dir+"/best_orb_info.dat", "a")
     # Hartree to eV
     Ha2eV = 27.2113863

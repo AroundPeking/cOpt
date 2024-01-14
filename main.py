@@ -148,7 +148,7 @@ if __name__=="__main__":
     flag = 0
     slurm_id = os.environ["SLURM_JOB_ID"]
     new_dir = "opt_"+slurm_id
-    orb_dir = "best_orb_"+slurm_id
+    orb_dir = work_dir+"/best_orb_"+slurm_id
     os.makedirs(new_dir, exist_ok=False)
     os.makedirs(orb_dir, exist_ok=False)
     IO.write_best_header(orb_dir)
