@@ -137,13 +137,20 @@ def write_orb(x, info_element, fix = [2, 2, 1], mod = [3, 3, 2], file = './ORBIT
         f.writelines(flist)
         
         
-def write_iter_header(file):
-    file = open(file, "a")
-    header = "{:<6s} {:<10s} {:<15s} {:<15s} {:<15s} {:<15s}".format("Iter", "Convg", "cRPA(eV)", "E_pbe(eV)", "E_tot(eV)", "change(eV, vs iter0)")
-    print(header, file=file)
-    file.close()
+def write_iter_header(file, dft):
+    if(dft == "rpa_pbe"):
+        file = open(file, "a")
+        header = "{:<6s} {:<10s} {:<15s} {:<15s} {:<15s} {:<15s}".format("Iter", "Convg", "cRPA(eV)", "E_pbe(eV)", "E_tot(eV)", "change(eV, vs iter0)")
+        print(header, file=file)
+        file.close()
+    elif(dft == "hf"):
+        file = open(file, "a")
+        header = "{:<6s} {:<10s} {:<15s} {:<15s}".format("Iter", "Convg", "E_hf(eV)", "change(eV, vs iter0)")
+        print(header, file=file)
+        file.close()
+
     
-def write_iter(file, flag, convg, crpa, e_pbe, e_tot, change):
+def write_iter_rpa_pbe(file, flag, convg, crpa, e_pbe, e_tot, change):
     file = open(file, "a")
     # Hartree to eV
     Ha2eV = 27.2113863
@@ -157,6 +164,14 @@ def write_iter(file, flag, convg, crpa, e_pbe, e_tot, change):
     file.close()
     
     
+def write_iter_hf(file, flag, convg, obj, obj_change):
+    file = open(file, "a")
+    # eV
+    line = "{:<6s} {:<10s} {:<15.8f} {:<15.8f}".format(str(flag), convg, obj, obj_change)
+    print(line, file=file)
+
+    file.close()
+
 def write_best_orb(flag, obj, obj_change, orb_dir):
     import subprocess
     file = open(orb_dir+"/best_orb_info.dat", "a")
@@ -180,6 +195,6 @@ cp ./*_gga_*au_*Ry_*.orb {0}
 
 def write_best_header(orb_dir):
     file = open(orb_dir+"/best_orb_info.dat", "a")
-    header = "{:<6s} {:<15s} {:<15s}".format("Iter", "cRPA(eV)", "change(eV, vs iter0)")
+    header = "{:<6s} {:<15s} {:<15s}".format("Iter", "obj(eV)", "change(eV, vs iter0)")
     print(header, file=file)
     file.close()

@@ -10,10 +10,10 @@ import get_info
 import IO
 import abfs
 from C_to_orb import create_orb_files
-import time
+import run_dft
 
 
-def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg, orb_dir):
+def obj(x0, info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg, orb_dir, dft):
     global obj_ini
     global best_obj
     global flag
@@ -51,55 +51,35 @@ cp ../STRU ./{0}
     
     #abfs.generate_abfs(info_element, abf_dir, abacus_abf, abf, mod)
 
-    # run abacus and librpa
     orb_str = get_info.get_orb_str(info_element[element[0]]['Nu'])
     atom_num = get_info.get_atomic_number(element[0])
-    run_abacus = '''
+    sys_run_str = '''
 cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
-{5} >single_{0}.out
-{6} > LibRPA_single_{0}.out
-'''.format(element[0], atom_num, info_element[element[0]]['Rcut'], info_element[element[0]]['Ecut'], orb_str, abacus, librpa)
-    #sys.stdout.flush() 
-    #subprocess.run( [run_abacus, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
-    #sys.stdout.flush() 
+'''.format(element[0], atom_num, info_element[element[0]]['Rcut'], info_element[element[0]]['Ecut'], orb_str)
+    subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
 
-    # Number of attempts allowed
-    max_attempts = 5
-
-    # Retry loop
-    for attempt in range(1, max_attempts + 1):
-        try:
-            # Run the command
-            subprocess.run([run_abacus, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL, check=True)
-
-            # If the command succeeds, break out of the loop
-            break
-        except subprocess.CalledProcessError as e:
-            # If the command fails, print an error message
-            print(f"Iter{flag}: Attempt {attempt} failed with exit code {e.returncode}. Retrying...", flush=True)
-
-            # Add a delay before retrying (optional)
-            time.sleep(1)
-    else:
-        # If all attempts fail, print an error message and handle accordingly
-        print(f"All {max_attempts} attempts failed. Exiting.")
-        # You can raise an exception, log the failure, or take other appropriate actions here.
-
-    cRPA=get_info.get_cRPA("LibRPA_single_"+element[0]+".out")
-    obj=cRPA
+    # run abacus and librpa
+    if(dft == "rpa_pbe"):
+        run_abacus = run_dft.rpa_pbe(element[0], abacus, librpa)
+        run_dft.run(flag, run_abacus)
+    elif(dft == "hf"):
+        run_abacus = run_dft.hf(element[0], abacus)
+        run_dft.run(flag, run_abacus)
+    obj = run_dft.get_obj(dft, element) # Ha for rpa, eV for hf
     if(flag==0):
-        obj_ini=obj
-        best_obj=obj
-    obj_change=obj-obj_ini
+            obj_ini = obj
+            best_obj = obj
+            obj_change = obj-obj_ini
     
     convg=get_info.convergence_test("single_"+element[0]+".out")
     
     if (flag % fre_disp == 0) or (convg == "N"):
-        # all units of energy here are Hartree
-        # convg=get_info.convergence_test("single_"+element[0]+".out")
-        E_withoutRPA=get_info.get_Etot_without_rpa("single_"+element[0]+".out")
-        E_pbe=get_info.get_etot("single_"+element[0]+".out")
-        E_tot=E_withoutRPA+cRPA
+        if (dft == "rpa_pbe"):
+            # all units of energy here are Hartree
+            # convg=get_info.convergence_test("single_"+element[0]+".out")
+            E_withoutRPA=get_info.get_Etot_without_rpa("single_"+element[0]+".out")
+            E_pbe=get_info.get_etot("single_"+element[0]+".out")
+            E_tot=E_withoutRPA+obj
         
     if (obj < best_obj):
         best_obj = obj
@@ -109,8 +89,11 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     os.chdir("../..")
     
     if (flag % fre_disp == 0) or (convg == "N"):
-        # all units of energy printed are eV
-        IO.write_iter(iter_name, flag, convg, cRPA, E_pbe, E_tot, obj_change)
+        if (dft == "rpa_pbe"):
+            # all units of energy printed are eV
+            IO.write_iter_rpa_pbe(iter_name, flag, convg, obj, E_pbe, E_tot, obj_change)
+        elif (dft == "hf"):
+            IO.write_iter_hf(iter_name, flag, convg, obj, obj_change)
     
     flag += 1
 
@@ -160,9 +143,9 @@ if __name__=="__main__":
     #IO.write_info_element(info_element, filesource = './C_to_orb.py')
     
     x0 = IO.read_orb(info_element, fix, mod, file = './ORBITAL_RESULTS.txt')
-    IO.write_iter_header(iter_name)
+    IO.write_iter_header(iter_name, dft)
     
-    args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg, orb_dir)
+    args=(info_element, new_dir, abf_dir, fix, mod, abf, abacus, abacus_abf, librpa, fre_disp, iter_name, init_chg, orb_dir, dft)
     # scipy
     if opt_method == "local opt":
             if method == "fmin":

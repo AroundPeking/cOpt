@@ -200,4 +200,11 @@ def get_cRPA_without_gamma(filesource='./LibRPA_single_Ne.out'):
 #--------------------------------------------------
 
 
-
+def get_hf(filesource="OUT.ABACUS/running_scf.log"):
+    a=checklog(filesource, wordcheck='FINAL_ETOT_IS')
+    match = re.search(r"-?\d+\.\d+", str(a))
+    if match:
+        e_hf = float(match.group(0))
+    else:
+        print("cannot get e_hf")
+    return float(e_hf)
