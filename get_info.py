@@ -20,14 +20,17 @@ def checklog(filesource, wordcheck):
     
     return size
     
-#read (element,Nu,Nl,Rcut,Ecut) from STRU, read (Ne) from ORBITAL_RESULTS.txt
+#read (element,Nu,Nl,Rcut,Ecut), pseudopotential from STRU, read (Ne) from ORBITAL_RESULTS.txt
 def get_info_element():
-    count=0
+    countx=0
+    county=0
     try:
         file=open('./STRU',"r")
         for i in file:
             x=re.search('NUMERICAL_ORBITAL',i)
-            count=count+1
+            y=re.search('ATOMIC_SPECIES',i)
+            countx=countx+1
+            county=county+1
             if x:
                 break
         file.close()
@@ -35,7 +38,10 @@ def get_info_element():
             print(e)
     with open('./STRU') as f:
         info=f.readlines()
-    orb=info[count]
+    pp_line=info[county]
+    pp = pp.split()[2]
+
+    orb=info[countx]
     element=orb.split('_')[0]
     po=orb.split('_')[2].find("a")
     Rcut=int(orb.split('_')[2][:po])
@@ -63,14 +69,14 @@ def get_info_element():
         raise ValueError("l_max is not one of spdfg")
         
     with open('./ORBITAL_RESULTS.txt','r+') as f:
-            flist=f.readlines()
+        flist=f.readlines()
     first_index=flist.index('\tType\tL\tZeta-Orbital\n')
     second_index=flist.index('\tType\tL\tZeta-Orbital\n',first_index+1)
     Ne=second_index-first_index-2
     info_element={element: {'index': 0, 'Nu': Nu, 'Nl': Nl, 'Rcut': Rcut, 'dr': 0.01, 'Ecut': Ecut, 'Ne': Ne}}
-    print(f"info_element: {info_element}, reading from STRU and ORBITAL_RESULTS.txt.", flush = True)
+    print(f"info_element: {info_element}, {pp} reading from STRU and ORBITAL_RESULTS.txt.", flush = True)
     
-    return info_element
+    return info_element, pp
           
 # receive a list of number 'l'
 # return string like "3s3p2d"
