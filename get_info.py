@@ -117,7 +117,7 @@ def convergence_test(filesource):
     else:
         return "N"
     
-# get DFT etot (Ha)
+# get DFT etot (eV)
 def get_etot(filesource='./single_Ne.out'):
     a=checklog(filesource, wordcheck='etot')
     for i in range(len(str(a))):
@@ -130,9 +130,9 @@ def get_etot(filesource='./single_Ne.out'):
         pass
     else:
         print("cannot get e_pbe")
-    return float(e_pbe)
+    return float(e_pbe * 27.2113863)
 
-# get Etot_without_rpa (Ha)
+# get Etot_without_rpa (eV)
 # Etot_without_rpa = etot - exc + exx
 def get_Etot_without_rpa(filesource='./single_Ne.out'):
     a=checklog(filesource, wordcheck='Etot_without_rpa')
@@ -146,9 +146,9 @@ def get_Etot_without_rpa(filesource='./single_Ne.out'):
         pass
     else:
         print("cannot get e_pbe_without_RPA")
-    return float(e_pbe_without_RPA)
+    return float(e_pbe_without_RPA * 27.2113863)
 
-# get cRPA (Ha)
+# get cRPA (eV)
 def get_cRPA(filesource='./LibRPA_single_Ne.out'):
     a=checklog(filesource, wordcheck='Total EcRPA')
     for i in range(len(str(a))):
@@ -162,7 +162,7 @@ def get_cRPA(filesource='./LibRPA_single_Ne.out'):
         pass
     else:
         print("cannot get E_cRPA")
-    return float(rpa)
+    return float(rpa * 27.2113863)
 
 # get cRPA without gamma point due to mishandle for Gamma in LibRPA
 # just for test
@@ -179,7 +179,7 @@ def get_cRPA_without_gamma(filesource='./LibRPA_single_Ne.out'):
         pass
     else:
         print("cannot get e_cRPA_without_gamma")
-    return float(rpa)
+    return float(rpa * 27.2113863)
 
 #-------------------------------------------------
     #condition number
@@ -199,7 +199,7 @@ def get_cRPA_without_gamma(filesource='./LibRPA_single_Ne.out'):
     #Ncondition=abs(eigenmax/eigenmin)
 #--------------------------------------------------
 
-
+# eV
 def get_hf(filesource="OUT.ABACUS/running_scf.log"):
     a=checklog(filesource, wordcheck='FINAL_ETOT_IS')
     match = re.search(r"-?\d+\.\d+", str(a))

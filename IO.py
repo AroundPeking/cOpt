@@ -152,12 +152,6 @@ def write_iter_header(file, dft):
     
 def write_iter_rpa_pbe(file, flag, convg, crpa, e_pbe, e_tot, change):
     file = open(file, "a")
-    # Hartree to eV
-    Ha2eV = 27.2113863
-    crpa   *= Ha2eV
-    e_pbe  *= Ha2eV
-    e_tot  *= Ha2eV
-    change *= Ha2eV
     line = "{:<6s} {:<10s} {:<15.8f} {:<15.8f} {:<15.8f} {:<15.8f}".format(str(flag), convg, crpa, e_pbe, e_tot, change)
     print(line, file=file)
 
@@ -175,10 +169,6 @@ def write_iter_hf(file, flag, convg, obj, obj_change):
 def write_best_orb(flag, obj, obj_change, orb_dir):
     import subprocess
     file = open(orb_dir+"/best_orb_info.dat", "a")
-    # Hartree to eV
-    Ha2eV = 27.2113863
-    obj  *= Ha2eV
-    obj_change *= Ha2eV
     line = "{:<6s} {:<15.8f} {:<15.8f}".format(str(flag), obj, obj_change)
     print(line, file=file)
 
