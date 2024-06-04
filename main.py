@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ##
-from typing import ByteString
-import numpy as np
 import os
-import subprocess
 # my code
 import get_info
 import IO
@@ -23,7 +20,7 @@ def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name
     if(dft == "rpa_pbe"):
         obj, convg = run_dft.one_iter_rpa(element[0], flag, init_chg, x0, info_element, fix, mod, abacus, librpa, pp)
     elif(dft == "hf"):
-        obj, convg = run_dft.one_iter_hf(element[0], flag, init_chg, x0, info_element, fix, mod, abacus, dimer_len, pp)
+        obj, convg = run_dft.one_iter_hf(element[0], flag, x0, info_element, fix, mod, abacus, dimer_len, pp)
 
     if(flag==0):
         obj_ini = obj
