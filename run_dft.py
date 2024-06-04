@@ -96,6 +96,7 @@ cp ../STRU ./{0}
 
 # Hartree-Fock
 def one_iter_hf(element, flag, init_chg, x0, info_element, fix, mod, abacus, dimer_len):
+    os.makedirs(str(flag), exist_ok=False)
     os.chdir("./"+str(flag))
     obj = 0.0
     convg = "Y"
@@ -128,7 +129,6 @@ cp .    /ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
 # Hartree-Fock
 def cp_files_hf(element, flag, init_chg, ilen):
     sys_run_str = '''
-mkdir {0}
 cd {0}
 mkdir {2}
 cp ../../ORBITAL_RESULTS.txt ./{2}
