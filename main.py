@@ -12,7 +12,7 @@ import IO
 import run_dft
 
 
-def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name, init_chg, orb_dir, dft, dimer_len):
+def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name, init_chg, orb_dir, dft, dimer_len, pp):
     global obj_ini
     global best_obj
     global flag
@@ -21,9 +21,9 @@ def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name
     os.chdir("./"+new_dir)
     
     if(dft == "rpa_pbe"):
-        obj, convg = run_dft.one_iter_rpa(element[0], flag, init_chg, x0, info_element, fix, mod, abacus, librpa)
+        obj, convg = run_dft.one_iter_rpa(element[0], flag, init_chg, x0, info_element, fix, mod, abacus, librpa, pp)
     elif(dft == "hf"):
-        obj, convg = run_dft.one_iter_hf(element[0], flag, init_chg, x0, info_element, fix, mod, abacus, dimer_len)
+        obj, convg = run_dft.one_iter_hf(element[0], flag, init_chg, x0, info_element, fix, mod, abacus, dimer_len, pp)
 
     if(flag==0):
         obj_ini = obj
@@ -74,13 +74,13 @@ if __name__=="__main__":
     IO.write_best_header(orb_dir)
     iter_name = "./iter."+slurm_id+".out"
     
-    info_element = get_info.get_info_element()
+    info_element, pp = get_info.get_info_element()
     element = list(info_element.keys())
     
     x0 = IO.read_orb(info_element, fix, mod, file = './ORBITAL_RESULTS.txt')
     IO.write_iter_header(iter_name, dft)
     
-    args=(info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name, init_chg, orb_dir, dft, dimer_len)
+    args=(info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name, init_chg, orb_dir, dft, dimer_len, pp)
     # scipy
     if opt_method == "local opt":
             if method == "fmin":

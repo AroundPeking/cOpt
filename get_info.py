@@ -30,7 +30,8 @@ def get_info_element():
             x=re.search('NUMERICAL_ORBITAL',i)
             y=re.search('ATOMIC_SPECIES',i)
             countx=countx+1
-            county=county+1
+            if not y:
+                county=county+1
             if x:
                 break
         file.close()

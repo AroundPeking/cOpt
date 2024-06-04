@@ -52,8 +52,8 @@ def get_obj(dft, element):
     return obj # eV
 
 # RPA_PBE
-def one_iter_rpa(element, flag, init_chg, x0, info_element, fix, mod, abacus, librpa):
-    cp_files_rpa(element, flag, init_chg)
+def one_iter_rpa(element, flag, init_chg, x0, info_element, fix, mod, abacus, librpa, pp):
+    cp_files_rpa(element, flag, init_chg, pp)
     #sub-sub-dir, i.e. number name 1, 2, ...
     os.chdir("./"+str(flag))
     #re-write ORBITAL_RESULTS.txt
@@ -76,15 +76,15 @@ cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     return obj, convg
 
 # RPA_PBE
-def cp_files_rpa(element, flag, init_chg):
+def cp_files_rpa(element, flag, init_chg, pp):
     sys_run_str = '''
 mkdir {0}
 cp ../ORBITAL_RESULTS.txt ./{0}
-cp ../{1}_ONCV_PBE-1.0.upf ./{0}
+cp ../{2} ./{0}
 cp ../INPUT ./{0}
 cp ../KPT ./{0}
 cp ../STRU ./{0}
-'''.format(str(flag), element)
+'''.format(str(flag), element, pp)
     if(init_chg=="true"):
         add_chg = '''
         cp ../SPIN*_CHG.cube ./{0}
@@ -95,13 +95,13 @@ cp ../STRU ./{0}
     #sys.stdout.flush() 
 
 # Hartree-Fock
-def one_iter_hf(element, flag, init_chg, x0, info_element, fix, mod, abacus, dimer_len):
+def one_iter_hf(element, flag, init_chg, x0, info_element, fix, mod, abacus, dimer_len, pp):
     os.makedirs(str(flag), exist_ok=False)
     os.chdir("./"+str(flag))
     obj = 0.0
     convg = "Y"
     for ilen in dimer_len:
-        cp_files_hf(element, flag, init_chg, ilen)
+        cp_files_hf(element, flag, init_chg, ilen, pp)
         #sub-sub-sub-dir, i.e. number name 1/2.0, 1/3.0, ...
         os.chdir("./"+str(ilen))
         #re-write ORBITAL_RESULTS.txt
@@ -127,18 +127,18 @@ cp .    /ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
     return obj/len(dimer_len), convg
 
 # Hartree-Fock
-def cp_files_hf(element, flag, init_chg, ilen):
+def cp_files_hf(element, flag, init_chg, ilen, pp):
     sys_run_str = '''
 cd {0}
 mkdir {2}
 cp ../../ORBITAL_RESULTS.txt ./{2}
-cp ../../{1}_ONCV_PBE-1.0.upf ./{2}
+cp ../../{3} ./{2}
 cp ../../INPUT ./{2}
 cp ../../KPT ./{2}
 cp ../../STRU ./{2}
 sed -i "s/distance/$(echo "scale=5; {2}" | bc)/g" ./{2}/STRU
 cd ..
-'''.format(str(flag), element, ilen)
+'''.format(str(flag), element, ilen, pp)
     if(init_chg=="true"):
         add_chg = '''
         cp ../SPIN*_CHG.cube ./{0}/{1}
