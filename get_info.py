@@ -31,6 +31,8 @@ def get_info_element():
             county=county+1
             if y:
                 break
+        file.close()
+        file=open('./STRU',"r")
         for i in file:
             x=re.search('NUMERICAL_ORBITAL',i)
             countx=countx+1
@@ -41,7 +43,7 @@ def get_info_element():
             print(e)
     with open('./STRU') as f:
         info=f.readlines()
-    pp_line=info[county+1]
+    pp_line=info[county]
     pp = pp_line.split()[2]
 
     orb=info[countx]
