@@ -39,7 +39,7 @@ def get_info_element():
     with open('./STRU') as f:
         info=f.readlines()
     pp_line=info[county]
-    pp = pp.split()[2]
+    pp = pp_line.split()[2]
 
     orb=info[countx]
     element=orb.split('_')[0]
