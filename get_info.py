@@ -28,12 +28,13 @@ def get_info_element():
         file=open('./STRU',"r")
         for i in file:
             x=re.search('NUMERICAL_ORBITAL',i)
-            y=re.search('ATOMIC_SPECIES',i)
             countx=countx+1
+            if x:
+                break
+        for i in file:
+            y=re.search('ATOMIC_SPECIES',i)
             county=county+1
             if y:
-                county=county-1
-            if x:
                 break
         file.close()
     except FileExistsError as e:
