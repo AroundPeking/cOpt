@@ -112,8 +112,8 @@ def one_iter_hf(element, flag, init_chg, x0, info_element, fix, mod, abacus, dim
         orb_str = get_info.get_orb_str(info_element[element]['Nu'])
         atom_num = get_info.get_atomic_number(element)
         sys_run_str = '''
-cp .    /ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
-'''.    format(element, atom_num, info_element[element]['Rcut'], info_element[element]['Ecut'], orb_str)
+cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
+'''.format(element, atom_num, info_element[element]['Rcut'], info_element[element]['Ecut'], orb_str)
         subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.  DEVNULL)
         abacus_dir = sys_hf(element, abacus)
         run_ABACUS(flag, abacus_dir)
