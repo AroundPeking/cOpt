@@ -26,15 +26,15 @@ def get_info_element():
     county=0
     try:
         file=open('./STRU',"r")
+        for j in file:
+            y=re.search('ATOMIC_SPECIES',j)
+            county=county+1
+            if y:
+                break
         for i in file:
             x=re.search('NUMERICAL_ORBITAL',i)
             countx=countx+1
             if x:
-                break
-        for i in file:
-            y=re.search('ATOMIC_SPECIES',i)
-            county=county+1
-            if y:
                 break
         file.close()
     except FileExistsError as e:
