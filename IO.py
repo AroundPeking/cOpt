@@ -166,18 +166,25 @@ def write_iter_hf(file, flag, convg, obj, obj_change):
 
     file.close()
 
-def write_best_orb(flag, obj, obj_change, orb_dir):
+def write_best_orb(flag, obj, obj_change, orb_dir, dft, dimer_len):
     import subprocess
     file = open(orb_dir+"/best_orb_info.dat", "a")
     line = "{:<6s} {:<15.8f} {:<15.8f}".format(str(flag), obj, obj_change)
     print(line, file=file)
-
     file.close()
-    sys_run_str = '''
-cp ./ORBITAL_RESULTS.txt {0}
-cp ./ORBITAL_PLOTU.dat {0}
-cp ./*_gga_*au_*Ry_*.orb {0}
-'''.format(orb_dir)
+
+    if(dft == "rpa_pbe"):
+        sys_run_str = '''
+cp ./{1}/ORBITAL_RESULTS.txt {0}
+cp ./{1}/ORBITAL_PLOTU.dat {0}
+cp ./{1}/*_gga_*au_*Ry_*.orb {0}
+'''.format(orb_dir, flag)
+    elif(dft == "hf"):
+        sys_run_str = '''
+cp ./{1}/{2}/ORBITAL_RESULTS.txt {0}
+cp ./{1}/{2}/ORBITAL_PLOTU.dat {0}
+cp ./{1}/{2}/*_gga_*au_*Ry_*.orb {0}
+'''.format(orb_dir, flag, dimer_len)
 
     #sys.stdout.flush() 
     subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)

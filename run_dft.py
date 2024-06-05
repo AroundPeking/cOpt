@@ -114,7 +114,7 @@ def one_iter_hf(element, flag, x0, info_element, fix, mod, abacus, dimer_len, pp
         sys_run_str = '''
 cp ./ORBITAL_{1}U.dat ./{0}_gga_{2}au_{3}Ry_{4}.orb
 '''.format(element, atom_num, info_element[element]['Rcut'], info_element[element]['Ecut'], orb_str)
-        subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.  DEVNULL)
+        subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
         abacus_dir = sys_hf(element, abacus)
         run_ABACUS(flag, abacus_dir)
         obj += get_obj("hf", element) # eV

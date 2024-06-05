@@ -33,10 +33,11 @@ def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name
             E_withoutRPA=get_info.get_Etot_without_rpa("./"+flag+"/"+"single_"+element[0]+".out")
             E_pbe=get_info.get_etot("./"+flag+"/"+"single_"+element[0]+".out")
             E_tot=E_withoutRPA+obj
-        
+    
+    #---------------- best_orb ------------------------
     if (obj < best_obj):
         best_obj = obj
-        IO.write_best_orb(flag, obj, obj_change, orb_dir)
+        IO.write_best_orb(flag, obj, obj_change, orb_dir, dft, dimer_len[0])
     
     #-------------print info to iter.out---------------
     os.chdir("..")
