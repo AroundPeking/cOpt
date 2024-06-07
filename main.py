@@ -25,7 +25,7 @@ def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name
     if(flag==0):
         obj_ini = obj
         best_obj = obj
-        obj_change = obj-obj_ini
+    obj_change = obj - obj_ini
     
     if (flag % fre_disp == 0) or (convg == "N"):
         if (dft == "rpa_pbe"):
@@ -37,7 +37,6 @@ def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name
     #---------------- best_orb ------------------------
     if (obj < best_obj):
         best_obj = obj
-        obj_change = obj-obj_ini
         IO.write_best_orb(flag, obj, obj_change, orb_dir, dft, dimer_len[0])
     
     #-------------print info to iter.out---------------
