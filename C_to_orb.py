@@ -61,7 +61,7 @@ def read_C_init(file_name,info_element):
 			if line.startswith("Type"):
 				it,il,iu = file.readline().split();	
 				il = int(il)
-				iu = int(iu)-1
+				iu = int(iu)
 				C_read_index.add((it,il,iu))
 				line = file.readline().split()
 				for ie in range(info_element[it]['Ne']):

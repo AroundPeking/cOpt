@@ -79,7 +79,8 @@ def read_orb(info_element, fix = [2, 2, 1], mod = [3, 3, 2], file = './ORBITAL_R
             is_append = False
             # read initial ORBITAL_RESULTS.txt
             for j in flist:
-                if j == '\t  '+element+' \t'+str(l)+'\t    '+str(fix[l]+1)+'\n':
+                #if j == '\t  '+element+' \t'+str(l)+'\t    '+str(fix[l]+1)+'\n':
+                if j == '      '+element+'   '+str(l)+'       '+str(fix[l])+'\n':
                     is_append = True
                 if is_append:
                     try:
@@ -88,7 +89,8 @@ def read_orb(info_element, fix = [2, 2, 1], mod = [3, 3, 2], file = './ORBITAL_R
                     except ValueError:
                         pass
                         
-                if j == '\t  '+element+' \t'+str(l+1)+'\t    1\n':
+                #if j == '\t  '+element+' \t'+str(l+1)+'\t    1\n':
+                if j == '      '+element+'   '+str(l+1)+'       0\n':
                     break
             
     return np.array(x0)
@@ -131,7 +133,7 @@ def write_orb(x, info_element, fix = [2, 2, 1], mod = [3, 3, 2], file = './ORBIT
                 flist[nline+1:nline+1+Ne] = lorb_str[(size[l]-i)*Ne:(size[l]-i+1)*Ne]
                 i -= 1
     # check length of x and modified coefficients
-    if tot_size*Ne != num:
+    if tot_size*Ne <= num:
         raise ValueError("Length of array and modified C_i not match!")
     with open(file,'w+') as f:
         f.writelines(flist)
