@@ -1,0 +1,128 @@
+Number of processors: 1
+World Proc    0: cpu01 
+Error! fail to open file librpa.in
+Default parameters will be used
+Error! fail to open file librpa.in
+Default parameters will be used
+task = rpa
+tfgrids_type = minimax
+nfreq = 16
+gf_R_threshold = 0.000000
+cs_R_threshold = 0.000001
+vq_threshold = 0.000000
+sqrt_coulomb_threshold = 0.000100
+libri_chi0_threshold_C = 0.000000
+libri_chi0_threshold_G = 0.000000
+libri_chi0_threshold_CSM = 0.000000
+libri_exx_threshold_C = 0.000000
+libri_exx_threshold_D = 0.000000
+libri_exx_threshold_V = 0.000000
+libri_exx_threshold_CSM = 0.000000
+use_libri_chi0 = F
+use_libri_exx = F
+use_scalapack_ecrpa = F
+BLACS parameters: nprows 1, npcols 1
+Proc  IRow  ICol
+   0     0     0
+
+Information of mean-field starting-point
+| number of spins: 2
+| number of k-points: 1
+| number of bands: 13
+| number of NAOs: 13
+| efermi (Ha): -0.388196
+| Minimal transition energy (Ha): 0.0227811
+| Maximal transition energy (Ha): 0.720857
+
+Lattice vectors (Bohr)
+        10         0         0
+         0        10         0
+         0         0        10
+Reciprocal lattice vectors (2PI Bohr^-1)
+       0.1        -0         0
+        -0       0.1        -0
+         0        -0       0.1
+kgrids:  1  1  1
+k-points read (Cartisian in 2Pi Bohr^-1 | fractional):
+ik    1:  0.0000000  0.0000000  0.0000000 |  0.0000000  0.0000000  0.0000000
+R-points to compute:
+iR    1:   0   0   0
+
+Rt_num: 16
+Reading eigenvector from file KS_eigenvector_0.dat
+finish read eigenvector!
+finish read Cs!
+| Natoms: 1   tot_atpairs:  1
+Chi parallel type
+| Atom_pairs_num:  1
+| R_tau_num:  16
+| USE_LibRI:  false
+| R_tau_routing
+  |process 0, size of Cs after erase: 1,  max_size: 1171354717
+Grid type: Minimax time-frequency grids
+Grid size: 16
+Frequency node & weight: 
+ 0   0.003293   0.006634
+ 1   0.010172   0.007226
+ 2   0.017964   0.008476
+ 3   0.027389   0.010521
+ 4   0.039343   0.013582
+ 5   0.055002   0.017997
+ 6   0.075952   0.024266
+ 7   0.104396   0.033133
+ 8   0.143456   0.045734
+ 9   0.197704   0.063897
+10   0.274143   0.090834
+11   0.384349   0.132949
+12   0.549875   0.205344
+13   0.818882   0.352432
+14   1.333715   0.756270
+15   2.806533   2.902695
+Time node & weight: 
+ 0   0.321431   0.827054
+ 1   1.712791   1.969198
+ 2   4.297714   3.226050
+ 3   8.231500   4.683880
+ 4  13.772549   6.464631
+ 5  21.325268   8.741132
+ 6  31.498980  11.752810
+ 7  45.181558  15.819741
+ 8  63.628617  21.361590
+ 9  88.579961  28.936030
+10 122.432173  39.316766
+11 168.524036  53.651598
+12 231.663096  73.819563
+13 319.254657 103.400300
+14 444.328364 151.115965
+15 637.533991 251.285014
+
+Finished construction of R-space Green's function
+| Saved Green's function:     64
+| Discarded Green's function: 0
+
+CHI0 p_id:   0, thread:  24, R: ( 0,  0,  0 ), tau: 63.628617 , TIME_USED: 0.011429
+CHI0 p_id:   0, thread:  25, R: ( 0,  0,  0 ), tau: 1.712791 , TIME_USED: 0.012573
+CHI0 p_id:   0, thread:   2, R: ( 0,  0,  0 ), tau: 21.325268 , TIME_USED: 0.013428
+CHI0 p_id:   0, thread:  29, R: ( 0,  0,  0 ), tau: 4.297714 , TIME_USED: 0.013687
+CHI0 p_id:   0, thread:  17, R: ( 0,  0,  0 ), tau: 231.663096 , TIME_USED: 0.014684
+CHI0 p_id:   0, thread:  10, R: ( 0,  0,  0 ), tau: 168.524036 , TIME_USED: 0.014952
+CHI0 p_id:   0, thread:  11, R: ( 0,  0,  0 ), tau: 45.181558 , TIME_USED: 0.015208
+CHI0 p_id:   0, thread:   5, R: ( 0,  0,  0 ), tau: 444.328364 , TIME_USED: 0.015489
+CHI0 p_id:   0, thread:  22, R: ( 0,  0,  0 ), tau: 31.498980 , TIME_USED: 0.015807
+CHI0 p_id:   0, thread:  18, R: ( 0,  0,  0 ), tau: 13.772549 , TIME_USED: 0.016393
+CHI0 p_id:   0, thread:   4, R: ( 0,  0,  0 ), tau: 122.432173 , TIME_USED: 0.016868
+CHI0 p_id:   0, thread:  13, R: ( 0,  0,  0 ), tau: 637.533991 , TIME_USED: 0.017145
+CHI0 p_id:   0, thread:  31, R: ( 0,  0,  0 ), tau: 319.254657 , TIME_USED: 0.017549
+CHI0 p_id:   0, thread:  16, R: ( 0,  0,  0 ), tau: 0.321431 , TIME_USED: 0.017919
+CHI0 p_id:   0, thread:  28, R: ( 0,  0,  0 ), tau: 88.579961 , TIME_USED: 0.018195
+CHI0 p_id:   0, thread:  27, R: ( 0,  0,  0 ), tau: 8.231500 , TIME_USED: 0.018778
+Calculating EcRPA without BLACS/ScaLAPACK
+RPA correlation energy (Hartree)
+| Weighted contribution from each k:
+| (         0,         0,         0): (-0.0722142,0)
+| Total EcRPA:       -0.072214217
+Entry                                                 #calls        CPU time (s)       Wall time (s)
+----------------------------------------------------------------------------------------------------
+Total                                                      1              1.8100              2.8944
+    space-time Green's function                           32              0.6600              0.0364
+    Loop over R-tau                                        1              0.7800              0.0197

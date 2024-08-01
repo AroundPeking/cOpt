@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: cOpt
+Version: 0.1
+Summary: Basis set optimization for correlation calculation
+Home-page: UNKNOWN
+Author: ABACUS IOP developers
+Author-email: gonghuanjing23@mails.ucas.ac.cn
+License: UNKNOWN
+Description: # Basis set optimization for correlation calculation
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

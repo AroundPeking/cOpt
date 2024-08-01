@@ -1,0 +1,13 @@
+{
+    "dft" : "rpa_pbe",
+    "fix" : [1, 1, 0],
+    "mod" : [3, 3, 2],
+    "init_chg" : "true", 
+    "maxiter" : 10000,
+    "opt_method" : "local opt", 
+    "method" : "BFGS", 
+    "fre_disp" : 20,
+    "abacus_inputs" : "/home/ghj/SIAB/ABACUS-orbitals/SIAB/atom_opt/re-opt/hf/F",
+    "abacus" : "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/gw_librpa_240511/abacus-develop/build/abacus",
+    "librpa" : "mpirun -n 1 -ppn 1 -env OMP_NUM_THREADS=48 /home/ghj/abacus/LibRPA/build/chi0_main.exe 16 0"
+}
