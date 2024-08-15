@@ -16,6 +16,7 @@ def initialize(fname: str = "./opt.json"):
     if fname == "":
         raise ValueError("No filename provided")
     user_setting = ciri.read_json(fname)
+    print(user_setting)
 
     os.chdir(user_setting["work_dir"])
     slurm_id = os.environ["SLURM_JOB_ID"]
@@ -26,6 +27,7 @@ def initialize(fname: str = "./opt.json"):
     ciwo.write_best_header(orb_dir)
     iter_name = user_setting["work_dir"]+"/iter."+slurm_id+".out"
     info_element, pp = ciro.get_info_element(user_setting["abacus_inputs"])
+    print(info_element, flush=True)
     x_all = ciri.read_orb(file = user_setting["abacus_inputs"]+'/ORBITAL_RESULTS.txt')
     x0 = ciri.get_initx(x_all, user_setting["fix"], user_setting["mod"])
     ciwo.write_iter_header(iter_name, user_setting["dft"])

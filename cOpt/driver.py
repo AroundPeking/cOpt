@@ -113,7 +113,7 @@ def run(fname: str,
     from cOpt.object.orbio import read_param
     param = read_param(user_setting["abacus_inputs"]+"/ORBITAL_RESULTS.txt")
     bounds = [(-1.0, 1.0) for _ in x0]
-    args = (info_element, new_dir, user_setting["fix"], user_setting["mod"], user_setting["abacus"], user_setting["librpa"], user_setting["freq_disp"], iter_name, user_setting["init_chg"], orb_dir, user_setting["dft"], user_setting["dimer_len"], pp, user_setting["abacus_inputs"], param["coeff"])
+    args = (info_element, new_dir, iter_name, orb_dir, pp, param["coeff"], user_setting)
     options = {'ftol': 0, 'gtol': 1e-6, 'maxiter': user_setting["maxiter"], 'disp': True, 'maxcor': 20}
 
     import cOpt.object.loss as col

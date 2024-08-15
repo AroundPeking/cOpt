@@ -53,14 +53,15 @@ def get_obj(dft, element):
     return obj # eV
 
 # RPA_PBE
-def one_iter_rpa(element, init_chg, x0, info_element, fix, mod, abacus, librpa, pp, abacus_inputs, flag, param):
+def one_iter_rpa(x0, info_element, pp, flag, param, user_setting):
 
     import cOpt.object.orbio as coo
-    cp_files_rpa(element, init_chg, pp, abacus_inputs, flag)
+    element = info_element.keys()
+    cp_files_rpa(element, user_setting["init_chg"], pp, user_setting["abacus_inputs"], flag)
     #sub-sub-dir, i.e. number name 1, 2, ...
     os.chdir("./"+str(flag))
     #re-write ORBITAL_RESULTS.txt
-    coo.rewrite_param("./ORBITAL_RESULTS.txt", x0, param, fix, mod, info_element[element]['Rcut'], element)
+    coo.rewrite_param("./ORBITAL_RESULTS.txt", x0, param, user_setting["fix"], user_setting["mod"], info_element[element]['Rcut'], element)
     #generate .orb file-------------------------------
     param = read_param("./ORBITAL_RESULTS.txt")
     coco._save_orb([param["coeff"]], element, info_element[element]['Ecut'], info_element[element]['Rcut'], info_element[element]['Nu'])
@@ -70,7 +71,7 @@ def one_iter_rpa(element, init_chg, x0, info_element, fix, mod, abacus, librpa, 
 cp ./{0}_{3}/{1}au{2}Ry/{0}_gga_{1}au_{2}Ry_{3}.orb .
 '''.format(element, info_element[element]['Rcut'], info_element[element]['Ecut'], orb_str)
     subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
-    abacus_dir = sys_rpa_pbe(element, abacus, librpa)
+    abacus_dir = sys_rpa_pbe(element, user_setting["abacus"], user_setting["librpa"])
     run_ABACUS(flag, abacus_dir)
     obj = get_obj("rpa_pbe", element) # eV
     convg = ciro.convergence_test("single_"+element+".out")
@@ -99,8 +100,9 @@ cp {3}/STRU ./{0}
     #sys.stdout.flush() 
 
 # Hartree-Fock
-def one_iter_hf(element, x0, info_element, fix, mod, abacus, dimer_len, pp, flag):
+def one_iter_hf(x0, info_element, fix, mod, abacus, dimer_len, pp, flag):
 
+    element = info_element.keys()
     os.makedirs(str(flag), exist_ok=False)
     os.chdir("./"+str(flag))
     obj = 0.0

@@ -6,7 +6,7 @@ import cOpt.io.read_output as ciro
 import cOpt.io.write_output as ciwo
 import cOpt.object.cal_exe as coce
 import cOpt.driver
-def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name, init_chg, orb_dir, dft, dimer_len, pp, abacus_inputs, coef_init: list):
+def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user_setting: dict):
     """
     loss function
     """
@@ -15,44 +15,44 @@ def obj(x0, info_element, new_dir, fix, mod, abacus, librpa, fre_disp, iter_name
     global flag
     flag = cOpt.driver.flag
 
-    element = list(info_element.keys())
+    element = info_element.keys()
     os.chdir(new_dir)
     
-    if(dft == "rpa_pbe"):
-        obj, convg = coce.one_iter_rpa(element[0], init_chg, x0, info_element, fix, mod, abacus, librpa, pp, abacus_inputs, flag, coef_init)
-    elif(dft == "hf"):
-        obj, convg = coce.one_iter_hf(element[0], x0, info_element, fix, mod, abacus, dimer_len, pp, flag)
+    if(user_setting["dft"] == "rpa_pbe"):
+        obj, convg = coce.one_iter_rpa(x0, info_element, pp, flag, coef_init, user_setting)
+    elif(user_setting["dft"] == "hf"):
+        obj, convg = coce.one_iter_hf(x0, info_element, user_setting["fix"], user_setting["mod"], user_setting["abacus"], user_setting["dimer_len"], pp, flag)
 
     if(flag == 0):
         obj_ini = obj
         best_obj = obj
     obj_change = obj - obj_ini
     
-    if (flag % fre_disp == 0) or (convg == "N"):
-        if (dft == "rpa_pbe"):
+    if (flag % user_setting["freq_disp"] == 0) or (convg == "N"):
+        if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy here are eV
-            E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element[0]+".out")
-            E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element[0]+".out")
+            E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element+".out")
+            E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element+".out")
             E_tot=E_withoutRPA+obj
     
     #---------------- best_orb ------------------------
     if (obj < best_obj):
         best_obj = obj
-        ciwo.write_best_orb(flag, obj, obj_change, orb_dir, dft, dimer_len[0], info_element)
+        ciwo.write_best_orb(flag, obj, obj_change, orb_dir, user_setting, info_element)
     
     #-------------print info to iter.out---------------
     os.chdir("..")
     
-    if (flag % fre_disp == 0) or (convg == "N"):
-        if (dft == "rpa_pbe"):
+    if (flag % user_setting["freq_disp"] == 0) or (convg == "N"):
+        if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy printed are eV
             ciwo.write_iter_rpa_pbe(iter_name, flag, convg, obj, E_pbe, E_tot, obj_change)
-        elif (dft == "hf"):
+        elif (user_setting["dft"] == "hf"):
             ciwo.write_iter_hf(iter_name, flag, convg, obj, obj_change)
     
     flag += 1
     cOpt.driver.flag = flag
-    print(cOpt.driver.flag)
+    #print(cOpt.driver.flag)
 
     return obj
 

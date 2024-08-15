@@ -78,7 +78,7 @@ def write_iter_hf(file, flag, convg, obj, obj_change):
 
     file.close()
 
-def write_best_orb(flag, obj, obj_change, orb_dir, dft, dimer_len, info_element):
+def write_best_orb(flag, obj, obj_change, orb_dir, user_setting, info_element):
     import subprocess
     import cOpt.io.read_output as ciro
 
@@ -86,19 +86,16 @@ def write_best_orb(flag, obj, obj_change, orb_dir, dft, dimer_len, info_element)
     line = "{:<6s} {:<15.8f} {:<15.8f}".format(str(flag), obj, obj_change)
     print(line, file=file)
     file.close()
-    print(info_element)
-    element = list(info_element.keys())[0]
-    print(element)
-    print(info_element[element])
+    element = info_element.keys()
     orb_str = ciro.get_orb_str(info_element[element]['Nu'])
-    if(dft == "rpa_pbe"):
+    if(user_setting["dft"] == "rpa_pbe"):
         sys_run_str = '''
 cp ./{1}/{2}_{3}/{4}au{5}Ry/* {0}
 '''.format(orb_dir, flag, element, orb_str, info_element[element]['Rcut'], info_element[element]['Ecut'])
-    elif(dft == "hf"):
+    elif(user_setting["dft"] == "hf"):
         sys_run_str = '''
 cp ./{1}/{2}/{3}_{4}/{5}au{6}Ry/* {0}
-'''.format(orb_dir, flag, dimer_len, element, orb_str, info_element[element]['Rcut'], info_element[element]['Ecut'])
+'''.format(orb_dir, flag, user_setting["dimer_len"], element, orb_str, info_element[element]['Rcut'], info_element[element]['Ecut'])
 
     #sys.stdout.flush() 
     subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
