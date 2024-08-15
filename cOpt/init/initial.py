@@ -16,7 +16,7 @@ def initialize(fname: str = "./opt.json"):
     if fname == "":
         raise ValueError("No filename provided")
     user_setting = ciri.read_json(fname)
-    print(user_setting)
+    print(user_setting, flush=True)
 
     os.chdir(user_setting["work_dir"])
     slurm_id = os.environ["SLURM_JOB_ID"]

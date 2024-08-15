@@ -56,7 +56,7 @@ def get_obj(dft, element):
 def one_iter_rpa(x0, info_element, pp, flag, param, user_setting):
 
     import cOpt.object.orbio as coo
-    element = info_element.keys()
+    element = list(info_element.keys())[0]
     cp_files_rpa(element, user_setting["init_chg"], pp, user_setting["abacus_inputs"], flag)
     #sub-sub-dir, i.e. number name 1, 2, ...
     os.chdir("./"+str(flag))
@@ -102,7 +102,7 @@ cp {3}/STRU ./{0}
 # Hartree-Fock
 def one_iter_hf(x0, info_element, fix, mod, abacus, dimer_len, pp, flag):
 
-    element = info_element.keys()
+    element = list(info_element.keys())[0]
     os.makedirs(str(flag), exist_ok=False)
     os.chdir("./"+str(flag))
     obj = 0.0

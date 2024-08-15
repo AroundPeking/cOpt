@@ -86,7 +86,7 @@ def write_best_orb(flag, obj, obj_change, orb_dir, user_setting, info_element):
     line = "{:<6s} {:<15.8f} {:<15.8f}".format(str(flag), obj, obj_change)
     print(line, file=file)
     file.close()
-    element = info_element.keys()
+    element = list(info_element.keys())[0]
     orb_str = ciro.get_orb_str(info_element[element]['Nu'])
     if(user_setting["dft"] == "rpa_pbe"):
         sys_run_str = '''

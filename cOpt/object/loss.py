@@ -15,7 +15,7 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
     global flag
     flag = cOpt.driver.flag
 
-    element = info_element.keys()
+    element = list(info_element.keys())[0]
     os.chdir(new_dir)
     
     if(user_setting["dft"] == "rpa_pbe"):
