@@ -1,0 +1,23 @@
+#This is the atom file containing all the information
+#about the lattice structure.
+
+ATOMIC_SPECIES
+Li 20.1797 Li_ONCV_PBE-1.0.upf 	#Element, Mass, Pseudopotential
+
+NUMERICAL_ORBITAL
+Li_gga_10au_100Ry_4s1p.orb
+
+LATTICE_CONSTANT
+1.889726164  		#Lattice constant
+
+LATTICE_VECTORS		
+10.00  0      0       	#Lattice vector 1
+0      10.00  0         #Lattice vector 2
+0      0      10.00 	#Lattice vector 3
+
+ATOMIC_POSITIONS
+Direct	 		#Cartesian(Unit is LATTICE_CONSTANT)
+Li			#Name of element	
+1			#Magnetic for this element.
+1			#Number of atoms
+0.00 0.00 0.00 0 0 0	#x,y,z, move_x, move_y, move_z
