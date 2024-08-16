@@ -20,7 +20,7 @@ def initialize(command_line: bool = True):
 
 Basis set optimization for correlation calculation
 
-Github repo: https://github.com/AroundPeking/basis_opt
+Github repo: https://github.com/AroundPeking/cOpt
            
 See reference for more information.
 ===================================================================================================
