@@ -11,7 +11,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         "numpy",
-        "scipy"
+        "scipy",
+	"matplotlib"
     ],
     # If you need to add package data
     # package_data={'your_package_name': ['data/*.data']},

@@ -56,6 +56,7 @@ def get_initx(x_all: list, fix: list, mod: list):
         start_index = current_index + f
         end_index = current_index + m
         x0.extend(x_all[start_index:end_index])
+        print(x_all[start_index:end_index])
         current_index += m
 
     return x0
