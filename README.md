@@ -1,6 +1,6 @@
 # cOpt: basis set optimization for correlation calculation
 
-This is an optimization module for basis set, based on [ABACUS](https://github.com/deepmodeling/abacus-develop "ABACUS git repo").
+This is an optimization module for basis set, based on [ABACUS](https://github.com/deepmodeling/abacus-develop "ABACUS git repo") and [LibRPA](https://github.com/Srlive1201/LibRPA.git "git LibRPA"). And starting point is recommended by [SIAB](https://github.com/kirk0830/ABACUS-ORBGEN.git "git SIAB").
 
 ## Installation
 
@@ -14,7 +14,7 @@ pip install .
 
 ## Usage
 
-You should prepare `opt.json` to set optimization parameters. 
+You should prepare `opt.json` to set optimization parameters.
 
 A folder `abacus_inputs` containing all inputs for ABACUS calculation in iterations, e.g. single atom RPA calculation. Besides, `ORBITAL_RESULTS.txt ` is needed to be the starting point. Here `SPIN*_CHG.cube` is recommended to speed up SCF calculation in every iteration.
 
