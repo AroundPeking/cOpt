@@ -46,7 +46,7 @@ def run_ABACUS(flag, run_abacus, max_attempts = 5):
 
 def get_obj(dft, element):
     if(dft == "rpa_pbe"):
-        obj = ciro.get_cRPA("LibRPA_single_"+element+".out")
+        obj = ciro.get_cRPA("LibRPA_single_"+element+".out") + ciro.get_Etot_without_rpa("single_"+element+".out")
     elif(dft == "hf"):
         obj = ciro.get_hf("OUT.ABACUS/running_scf.log")
 

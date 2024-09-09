@@ -31,9 +31,9 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
     if (flag % user_setting["freq_disp"] == 0) or (convg == "N"):
         if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy here are eV
-            E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element+".out")
+            # E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element+".out")
             E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element+".out")
-            E_tot=E_withoutRPA+obj
+            E_tot=obj
     
     #---------------- best_orb ------------------------
     if (obj < best_obj):

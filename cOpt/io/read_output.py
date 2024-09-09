@@ -27,6 +27,7 @@ def get_info_element(abacus_inputs):
     """
     read (element,Nu,Nl,Rcut,Ecut), pseudopotential from STRU, read (Ne) from ORBITAL_RESULTS.txt
     """
+    import re
     file_stru = os.path.join(abacus_inputs, "STRU")
     file_orb = os.path.join(abacus_inputs, "ORBITAL_RESULTS.txt")
     countx=0
@@ -82,10 +83,11 @@ def get_info_element(abacus_inputs):
         
     with open(file_orb,'r+') as f:
         flist=f.readlines()
-    #first_index=flist.index('\tType\tL\tZeta-Orbital\n')
-    #second_index=flist.index('\tType\tL\tZeta-Orbital\n',first_index+1)
-    first_index=flist.index('    Type   L   Zeta-Orbital\n')
-    second_index=flist.index('    Type   L   Zeta-Orbital\n',first_index+1)
+    #first_index=flist.index('    Type   L   Zeta-Orbital\n')
+    #second_index=flist.index('    Type   L   Zeta-Orbital\n',first_index+1)
+    pattern = re.compile(r'\s*Type\s+L\s+Zeta-Orbital\s*')
+    first_index = next(i for i, line in enumerate(flist) if pattern.match(line))
+    second_index = next(i for i, line in enumerate(flist[first_index + 1:], start=first_index + 1) if pattern.match(line))
     Ne=second_index-first_index-2
     info_element={element: {'index': 0, 'Nu': Nu, 'Nl': Nl, 'Rcut': Rcut, 'dr': 0.01, 'Ecut': Ecut, 'Ne': Ne}}
     print(f"info_element: {info_element}, {pp} reading from STRU and ORBITAL_RESULTS.txt.", flush = True)

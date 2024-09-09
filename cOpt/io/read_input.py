@@ -28,12 +28,13 @@ def read_orb(file = './ORBITAL_RESULTS.txt'):
     read ORBITAL_RESULTS.txt
     return all c_q
     """
+    import re
     x0 = []
     
     with open(file) as f:
         flist = f.readlines()
     for line in flist:
-        if line == '    Type   L   Zeta-Orbital\n' \
+        if re.search(r'\s*Type\s+L\s+Zeta-Orbital\s*', line) \
         or line == '</Coefficient>\n':
             if "tmp" in locals().keys():
                 x0.append(tmp)

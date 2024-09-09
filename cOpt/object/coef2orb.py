@@ -86,4 +86,4 @@ if __name__ == "__main__":
     from cOpt.object.orbio import read_param
     a = read_param("./ORBITAL_RESULTS.txt")
     print(a)
-    _save_orb([a["coeff"]],a["elem"],100,a["rcut"],[6,3,2])
+    _save_orb([a["coeff"]],a["elem"],100,a["rcut"],[2,2,1])
