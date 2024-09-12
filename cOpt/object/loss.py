@@ -32,6 +32,7 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
         if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy here are eV
             # E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element+".out")
+            crpa = ciro.get_cRPA("LibRPA_single_"+element+".out")
             E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element+".out")
             E_tot=obj
     
@@ -46,7 +47,7 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
     if (flag % user_setting["freq_disp"] == 0) or (convg == "N"):
         if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy printed are eV
-            ciwo.write_iter_rpa_pbe(iter_name, flag, convg, obj, E_pbe, E_tot, obj_change)
+            ciwo.write_iter_rpa_pbe(iter_name, flag, convg, crpa, E_pbe, E_tot, obj_change)
         elif (user_setting["dft"] == "hf"):
             ciwo.write_iter_hf(iter_name, flag, convg, obj, obj_change)
     
