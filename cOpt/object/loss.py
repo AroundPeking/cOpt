@@ -32,7 +32,7 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
         if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy here are eV
             # E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element+".out")
-            crpa = ciro.get_cRPA("LibRPA_single_"+element+".out")
+            crpa = ciro.get_cRPA("./"+str(flag)+"/"+"LibRPA_single_"+element+".out")
             E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element+".out")
             E_tot=obj
     
