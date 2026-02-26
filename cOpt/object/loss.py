@@ -2,10 +2,22 @@
 # -*- coding: utf-8 -*-
 ##
 import os
+import math
+import numpy as np
 import cOpt.io.read_output as ciro
 import cOpt.io.write_output as ciwo
 import cOpt.object.cal_exe as coce
 import cOpt.driver
+
+_OBJ_CACHE = {}
+
+
+def reset_runtime_state():
+    """Reset in-memory objective cache for a new optimization run."""
+    global _OBJ_CACHE
+    _OBJ_CACHE = {}
+
+
 def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user_setting: dict):
     """
     loss function
@@ -15,36 +27,65 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
     global flag
     flag = cOpt.driver.flag
 
+    cache_key = None
+    if user_setting.get("use_obj_cache", True):
+        cache_digits = int(user_setting.get("cache_digits", 12))
+        cache_key = tuple(np.round(np.asarray(x0, dtype=float), cache_digits))
+        if cache_key in _OBJ_CACHE:
+            return _OBJ_CACHE[cache_key]
+
     element = list(info_element.keys())[0]
     os.chdir(new_dir)
     
     if(user_setting["dft"] == "rpa_pbe"):
         obj, convg = coce.one_iter_rpa(x0, info_element, pp, flag, coef_init, user_setting)
     elif(user_setting["dft"] == "hf"):
-        obj, convg = coce.one_iter_hf(x0, info_element, user_setting["fix"], user_setting["mod"], user_setting["abacus"], user_setting["dimer_len"], pp, flag)
+        obj, convg = coce.one_iter_hf(
+            x0,
+            info_element,
+            user_setting["fix"],
+            user_setting["mod"],
+            user_setting["abacus"],
+            user_setting["dimer_len"],
+            pp,
+            flag,
+            user_setting.get("abacus_inputs", ".")
+        )
 
     if(flag == 0):
         obj_ini = obj
         best_obj = obj
-    obj_change = obj - obj_ini
-    
+
+    if math.isfinite(obj) and math.isfinite(obj_ini):
+        obj_change = obj - obj_ini
+    else:
+        obj_change = float("nan")
+
+    should_log = (flag % user_setting["freq_disp"] == 0) or (convg == "N")
+    crpa = float("nan")
+    E_pbe = float("nan")
+    E_tot = obj
     if (flag % user_setting["freq_disp"] == 0) or (convg == "N"):
-        if (user_setting["dft"] == "rpa_pbe"):
+        if (user_setting["dft"] == "rpa_pbe") and convg == "Y":
             # all units of energy here are eV
             # E_withoutRPA=ciro.get_Etot_without_rpa("./"+str(flag)+"/"+"single_"+element+".out")
-            crpa = ciro.get_cRPA("./"+str(flag)+"/"+"LibRPA_single_"+element+".out")
-            E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element+".out")
-            E_tot=obj
+            try:
+                crpa = ciro.get_cRPA("./"+str(flag)+"/"+"LibRPA_single_"+element+".out")
+                E_pbe=ciro.get_etot("./"+str(flag)+"/"+"single_"+element+".out")
+                E_tot=obj
+            except Exception as e:
+                print(f"Iter{flag}: fail to parse logs for report, keep NaN fields. err={e}", flush=True)
+                convg = "N"
     
     #---------------- best_orb ------------------------
-    if (obj < best_obj):
+    if (math.isfinite(obj) and (not math.isfinite(best_obj) or obj < best_obj)):
         best_obj = obj
         ciwo.write_best_orb(flag, obj, obj_change, orb_dir, user_setting, info_element)
     
     #-------------print info to iter.out---------------
     os.chdir("..")
     
-    if (flag % user_setting["freq_disp"] == 0) or (convg == "N"):
+    if should_log:
         if (user_setting["dft"] == "rpa_pbe"):
             # all units of energy printed are eV
             ciwo.write_iter_rpa_pbe(iter_name, flag, convg, crpa, E_pbe, E_tot, obj_change)
@@ -54,6 +95,9 @@ def obj(x0, info_element, new_dir, iter_name, orb_dir, pp, coef_init: list, user
     flag += 1
     cOpt.driver.flag = flag
     #print(cOpt.driver.flag)
+
+    if cache_key is not None:
+        _OBJ_CACHE[cache_key] = obj
 
     return obj
 

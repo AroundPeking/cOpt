@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def _save_orb(coefs, elem, ecut, rcut: int, nzeta, jY_type: str = "reduced"):
+
+def _save_orb(coefs, elem, ecut, rcut: int, nzeta, jY_type: str = "reduced", orthonormalize: bool = False):
     """
     Plot the orbital and save .orb file
     The coefficients should be in the form of
@@ -13,7 +14,7 @@ def _save_orb(coefs, elem, ecut, rcut: int, nzeta, jY_type: str = "reduced"):
     dr = 0.01
     r = np.linspace(0, rcut, int(rcut/dr)+1)
 
-    chi = _build_orb(coefs, rcut, 0.01, jY_type)
+    chi = _build_orb(coefs, rcut, 0.01, jY_type, orthonormalize)
     syms = "SPDFGHIKLMNOQRTUVWXYZ".lower()
     nz = nzeta
     suffix = "".join([f"{nz[j]}{syms[j]}" for j in range(len(nz))])
@@ -31,7 +32,7 @@ def _save_orb(coefs, elem, ecut, rcut: int, nzeta, jY_type: str = "reduced"):
     os.rename(fparam, os.path.join(f"{folder}/{subfolder}", "ORBITAL_RESULTS.txt"))
     #print(f"orbital saved as {forb}")
 
-def _build_orb(coefs, rcut, dr: float = 0.01, jY_type: str = "reduced"):
+def _build_orb(coefs, rcut, dr: float = 0.01, jY_type: str = "reduced", orthonormalize: bool = False):
     """build real space grid orbital based on the coefficients of the orbitals,
     rcut and grid spacing dr. The coefficients should be in the form of
     [it][l][zeta][q].
@@ -54,7 +55,7 @@ def _build_orb(coefs, rcut, dr: float = 0.01, jY_type: str = "reduced"):
 
     r = np.linspace(0, rcut, int(rcut/dr)+1) # hard code dr to be 0.01? no...
     if jY_type in ["reduced", "nullspace", "svd"]:
-        chi = build_reduced(coefs[0], rcut, r, True)
+        chi = build_reduced(coefs[0], rcut, r, orthonormalize)
     else:
         coefs = coeff_normalized2raw(coefs, rcut)
         chi = build_raw(coefs[0], rcut, r, 0.0, True, True)

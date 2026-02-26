@@ -3,6 +3,9 @@
 ##
 import re
 
+
+_FLOAT_PATTERN = r"([-+]?\d*\.?\d+(?:[Ee][-+]?\d+)?)"
+
 def checklog(filesource, wordcheck):
     """
     find "wordcheck" from "fildsource"
@@ -149,21 +152,25 @@ def convergence_test(filesource):
         return "N"
     
 
+def _extract_last_float(filesource, pattern):
+    """Extract the last float matched by regex pattern from file."""
+    regex = re.compile(pattern)
+    value = None
+    with open(filesource, "r") as file:
+        for line in file:
+            match = regex.search(line)
+            if match:
+                value = float(match.group(1))
+    if value is None:
+        raise ValueError(f"cannot find pattern `{pattern}` in {filesource}")
+    return value
+
+
 def get_etot(filesource='./single_Ne.out'):
     """
     get DFT etot (eV)
     """
-    a=checklog(filesource, wordcheck='etot')
-    for i in range(len(str(a))):
-        if(str(a)[i]==':' ):
-            for j in range(len(str(a))):
-                if(str(a)[j]=='n'):
-                    if(j>i):
-                        e_pbe=float(str(a)[i+1:j-1])
-    if float(e_pbe):
-        pass
-    else:
-        print("cannot get e_pbe")
+    e_pbe = _extract_last_float(filesource, rf"etot\(Ha\):\s*{_FLOAT_PATTERN}")
     return float(e_pbe * 27.2113863)
 
 
@@ -172,36 +179,18 @@ def get_Etot_without_rpa(filesource='./single_Ne.out'):
     get Etot_without_rpa (eV)
     Etot_without_rpa = etot - exc + exx
     """
-    a=checklog(filesource, wordcheck='Etot_without_rpa')
-    for i in range(len(str(a))):
-        if(str(a)[i]==':' ):
-            for j in range(len(str(a))):
-                if(str(a)[j]=='n'):
-                    if(j>i):
-                        e_pbe_without_RPA=float(str(a)[i+1:j-1])
-    if float(e_pbe_without_RPA):
-        pass
-    else:
-        print("cannot get e_pbe_without_RPA")
-    return float(e_pbe_without_RPA * 27.2113863)
+    e_pbe_without_rpa = _extract_last_float(
+        filesource,
+        rf"Etot_without_rpa\(Ha\):\s*{_FLOAT_PATTERN}"
+    )
+    return float(e_pbe_without_rpa * 27.2113863)
 
 
 def get_cRPA(filesource='./LibRPA_single_Ne.out'):
     """
     get cRPA (eV)
     """
-    a=checklog(filesource, wordcheck='Total EcRPA')
-    for i in range(len(str(a))):
-        if(str(a)[i]==':' ):
-            break
-    for j in range(len(str(a))):
-        if(str(a)[j]=='n'):
-            break
-    rpa=float(str(a)[i+1:j-1])
-    if float(rpa):
-        pass
-    else:
-        print("cannot get E_cRPA")
+    rpa = _extract_last_float(filesource, rf"Total EcRPA:\s*{_FLOAT_PATTERN}")
     return float(rpa * 27.2113863)
 
 
@@ -210,19 +199,10 @@ def get_cRPA_without_gamma(filesource='./LibRPA_single_Ne.out'):
     get cRPA without gamma point due to mishandle for Gamma in LibRPA
     just for test
     """
-    a=checklog(filesource, wordcheck='EcRPA without gamma contributing')
-    for i in range(len(str(a))):
-        if(str(a)[i]==':' ):
-            break
-    for j in range(len(str(a))):
-        if(str(a)[j]=='\\'):
-            break
-    rpa=str(a)[i+1:j-1]
-    if float(rpa):
-        pass
-    else:
-        print("cannot get e_cRPA_without_gamma")
-    
+    rpa = _extract_last_float(
+        filesource,
+        rf"EcRPA without gamma contributing:\s*{_FLOAT_PATTERN}"
+    )
     return float(rpa * 27.2113863)
 
 
@@ -230,12 +210,7 @@ def get_hf(filesource="OUT.ABACUS/running_scf.log"):
     """
     get hf total energy, eV
     """
-    a=checklog(filesource, wordcheck='FINAL_ETOT_IS')
-    match = re.search(r"-?\d+\.\d+", str(a))
-    if match:
-        e_hf = float(match.group(0))
-    else:
-        print("cannot get e_hf")
+    e_hf = _extract_last_float(filesource, rf"FINAL_ETOT_IS\s*{_FLOAT_PATTERN}")
     return float(e_hf)
 
 

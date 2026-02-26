@@ -9,6 +9,8 @@ import cOpt.io.write_output as ciwo
 import cOpt.object.coef2orb as coco
 from cOpt.object.orbio import read_param
 
+FAILED_OBJ = 1.0e6
+
 def sys_rpa_pbe(element, abacus, librpa):
     run_abacus = '''
 {1} >single_{0}.out
@@ -29,20 +31,20 @@ def run_ABACUS(flag, run_abacus, max_attempts = 5):
     for attempt in range(1, max_attempts + 1):
         try:
             # Run the command
-            subprocess.run([run_abacus, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL, check=True)
+            subprocess.run(run_abacus, shell=True, text=True, stdin=subprocess.DEVNULL, check=True)
 
             # If the command succeeds, break out of the loop
-            break
+            return True
         except subprocess.CalledProcessError as e:
             # If the command fails, print an error message
             print(f"Iter{flag}: Attempt {attempt} failed with exit code {e.returncode}. Retrying...", flush=True)
 
             # Add a delay before retrying (optional)
             time.sleep(1)
-    else:
-        # If all attempts fail, print an error message and handle accordingly
-        print(f"All {max_attempts} attempts failed. Exiting.")
-        # You can raise an exception, log the failure, or take other appropriate actions here.
+
+    # If all attempts fail, return False and let objective handle penalty
+    print(f"Iter{flag}: all {max_attempts} attempts failed, use penalty objective.", flush=True)
+    return False
 
 def get_obj(dft, element):
     if(dft == "rpa_pbe"):
@@ -64,17 +66,33 @@ def one_iter_rpa(x0, info_element, pp, flag, param, user_setting):
     coo.rewrite_param("./ORBITAL_RESULTS.txt", x0, param, user_setting["fix"], user_setting["mod"], info_element[element]['Rcut'], element)
     #generate .orb file-------------------------------
     param = read_param("./ORBITAL_RESULTS.txt")
-    coco._save_orb([param["coeff"]], element, info_element[element]['Ecut'], info_element[element]['Rcut'], info_element[element]['Nu'])
+    coco._save_orb(
+        [param["coeff"]],
+        element,
+        info_element[element]['Ecut'],
+        info_element[element]['Rcut'],
+        info_element[element]['Nu'],
+        orthonormalize=user_setting.get("orb_orthonormalize", False)
+    )
 
     orb_str = ciro.get_orb_str(info_element[element]['Nu'])
     sys_run_str = '''
 cp ./{0}_{3}/{1}au{2}Ry/{0}_gga_{1}au_{2}Ry_{3}.orb .
 '''.format(element, info_element[element]['Rcut'], info_element[element]['Ecut'], orb_str)
-    subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
+    subprocess.run(sys_run_str, shell=True, text=True, stdin=subprocess.DEVNULL)
     abacus_dir = sys_rpa_pbe(element, user_setting["abacus"], user_setting["librpa"])
-    run_ABACUS(flag, abacus_dir)
-    obj = get_obj("rpa_pbe", element) # eV
-    convg = ciro.convergence_test("single_"+element+".out")
+    run_ok = run_ABACUS(flag, abacus_dir)
+    if run_ok:
+        try:
+            obj = get_obj("rpa_pbe", element) # eV
+            convg = ciro.convergence_test("single_"+element+".out")
+        except Exception as e:
+            print(f"Iter{flag}: failed to parse energies, use penalty objective. err={e}", flush=True)
+            obj = FAILED_OBJ
+            convg = "N"
+    else:
+        obj = FAILED_OBJ
+        convg = "N"
     os.chdir("..")
 
     return obj, convg
@@ -96,11 +114,11 @@ cp {3}/STRU ./{0}
         '''.format(str(flag), abacus_inputs)
         sys_run_str += add_chg
     #sys.stdout.flush() 
-    subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
+    subprocess.run(sys_run_str, shell=True, text=True, stdin=subprocess.DEVNULL)
     #sys.stdout.flush() 
 
 # Hartree-Fock
-def one_iter_hf(x0, info_element, fix, mod, abacus, dimer_len, pp, flag):
+def one_iter_hf(x0, info_element, fix, mod, abacus, dimer_len, pp, flag, abacus_inputs="."):
 
     element = list(info_element.keys())[0]
     os.makedirs(str(flag), exist_ok=False)
@@ -108,28 +126,45 @@ def one_iter_hf(x0, info_element, fix, mod, abacus, dimer_len, pp, flag):
     obj = 0.0
     convg = "Y"
     for ilen in dimer_len:
-        cp_files_hf(ilen, pp)
+        cp_files_hf(ilen, pp, abacus_inputs)
         #sub-sub-sub-dir, i.e. number name 1/2.0, 1/3.0, ...
         os.chdir("./"+str(ilen))
         #re-write ORBITAL_RESULTS.txt
         ciwo.write_orb(x0, info_element, fix, mod, file = './ORBITAL_RESULTS.txt')
         #generate .orb file-------------------------------
         param = read_param("./ORBITAL_RESULTS.txt")
-        coco._save_orb([param["coefs"]], element, info_element[element]['Ecut'], info_element[element]['Rcut'], info_element[element]['Nu'])
+        coco._save_orb([param["coeff"]], element, info_element[element]['Ecut'], info_element[element]['Rcut'], info_element[element]['Nu'])
 
         orb_str = ciro.get_orb_str(info_element[element]['Nu'])
         sys_run_str = '''
 cp ./{0}_{3}/{1}au{2}Ry/{0}_gga_{1}au_{2}Ry_{3}.orb .
 '''.format(element, info_element[element]['Rcut'], info_element[element]['Ecut'], orb_str)
-        subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
+        subprocess.run(sys_run_str, shell=True, text=True, stdin=subprocess.DEVNULL)
         abacus_dir = sys_hf(element, abacus)
-        run_ABACUS(flag, abacus_dir)
-        obj += get_obj("hf", element) # eV
-        loc_convg = ciro.convergence_test("single_"+element+".out")
+        run_ok = run_ABACUS(flag, abacus_dir)
+        if not run_ok:
+            convg = "N"
+            obj = FAILED_OBJ
+            os.chdir("..")
+            break
+
+        try:
+            obj += get_obj("hf", element) # eV
+            loc_convg = ciro.convergence_test("single_"+element+".out")
+        except Exception as e:
+            print(f"Iter{flag}: failed to parse HF energies, use penalty objective. err={e}", flush=True)
+            convg = "N"
+            obj = FAILED_OBJ
+            os.chdir("..")
+            break
+
         if(loc_convg == "N"):
             convg = "N"
         os.chdir("..")
     os.chdir("..")
+
+    if obj >= FAILED_OBJ:
+        return obj, convg
 
     return obj/len(dimer_len), convg
 
@@ -147,5 +182,5 @@ cd ..
 '''.format(ilen, pp, abacus_inputs)
     
     #sys.stdout.flush() 
-    subprocess.run( [sys_run_str, "--login"], shell=True, text=True, stdin=subprocess.DEVNULL)
+    subprocess.run(sys_run_str, shell=True, text=True, stdin=subprocess.DEVNULL)
     #sys.stdout.flush() 

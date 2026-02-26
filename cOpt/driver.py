@@ -61,6 +61,48 @@ See reference for more information.
 import cOpt.init.initial as cii
 import cOpt.utils.listmanip as culm
 import numpy as np
+
+
+def _build_minimize_options(method: str, user_setting: dict):
+    """Build method-specific scipy.optimize.minimize options."""
+    maxiter = user_setting["maxiter"]
+    options = {"maxiter": maxiter, "disp": True}
+
+    if method == "Powell":
+        options["ftol"] = user_setting.get("ftol", 1e-4)
+        options["xtol"] = user_setting.get("xtol", 1e-4)
+    elif method == "Nelder-Mead":
+        options["xatol"] = user_setting.get("xatol", 1e-4)
+        options["fatol"] = user_setting.get("fatol", 1e-4)
+    elif method in ("BFGS", "CG"):
+        options["gtol"] = user_setting.get("gtol", 1e-4)
+        options["eps"] = user_setting.get("fd_eps", 1e-3)
+    elif method == "L-BFGS-B":
+        options["ftol"] = user_setting.get("ftol", 1e-9)
+        options["gtol"] = user_setting.get("gtol", 1e-4)
+        options["maxcor"] = user_setting.get("maxcor", 20)
+        options["eps"] = user_setting.get("fd_eps", 1e-3)
+
+    return options
+
+
+def _build_bounds(method: str, x0, user_setting: dict):
+    """Build optional bounds from opt.json.
+
+    Use `coef_bounds: [lower, upper]` in opt.json to enable.
+    """
+    if "coef_bounds" not in user_setting:
+        return None
+
+    bound_methods = {"Nelder-Mead", "L-BFGS-B", "TNC", "SLSQP", "Powell", "trust-constr"}
+    if method not in bound_methods:
+        print(f"Warning: method {method} does not use bounds, ignore coef_bounds.", flush=True)
+        return None
+
+    lower, upper = user_setting["coef_bounds"]
+    return [(float(lower), float(upper)) for _ in x0]
+
+
 def run(fname: str, 
         test: bool = True):
     """run the whole workflow of optimization:
@@ -103,6 +145,7 @@ def run(fname: str,
     ```
     """
     global flag
+    flag = 0
     
     # read input, for each term, see above annotation for details
     coef_init, info_element, user_setting, pp, new_dir, orb_dir,\
@@ -112,11 +155,14 @@ def run(fname: str,
 
     from cOpt.object.orbio import read_param
     param = read_param(user_setting["abacus_inputs"]+"/ORBITAL_RESULTS.txt")
-    bounds = [(-1.0, 1.0) for _ in x0]
+    method = user_setting["method"]
+    bounds = _build_bounds(method, x0, user_setting)
+    options = _build_minimize_options(method, user_setting)
+    tol = user_setting.get("tol", 1e-7)
     args = (info_element, new_dir, iter_name, orb_dir, pp, param["coeff"], user_setting)
-    options = {'ftol': 0, 'gtol': 1e-6, 'maxiter': user_setting["maxiter"], 'disp': True, 'maxcor': 20}
 
     import cOpt.object.loss as col
+    col.reset_runtime_state()
     # scipy
     if user_setting["opt_method"] == "local opt":
             if user_setting["method"] == "fmin":
@@ -128,7 +174,15 @@ def run(fname: str,
             else:
                 from scipy.optimize import minimize
             # 'Nelder-Mead' 'Powell'
-                res = minimize(col.obj, x0, method=user_setting["method"], tol=1e-7, args=args, options=options, bounds=bounds)
+                res = minimize(
+                    col.obj,
+                    x0,
+                    method=method,
+                    tol=tol,
+                    args=args,
+                    options=options,
+                    bounds=bounds
+                )
                 print("Local minimum: x = %s , f(x) = %s" % (res.x, res.fun))
                 print("number of iteration for local minization: %d (nit)" %res.nit)
                 print('number of total iteration:%d'%flag)
